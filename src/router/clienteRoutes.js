@@ -6,14 +6,17 @@ const router = express.Router()
 
 router.post('/registrar', async (req, res) =>{
     try {
-        const { nome, email, telefone,} = req.body
-             const cliente = await prisma.cliente.create({
-                data: {
-                    nome: nome,
-                    email: email,
-                    telefone: telefone,
-                }
-             })
+        const { nome, email, telefone } = req.body
+        const adminId = req.userId 
+        
+        const cliente = await prisma.cliente.create({
+            data: {
+                nome: nome,
+                email: email,
+                telefone: telefone,
+                adminId: adminId 
+            }
+        })
 
              if(!cliente){
                 return res.status(400).json({message: 'Não foi possivel cadastrar o cliete!'})
