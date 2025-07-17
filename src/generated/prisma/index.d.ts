@@ -2055,15 +2055,25 @@ export namespace Prisma {
 
   export type AggregateCliente = {
     _count: ClienteCountAggregateOutputType | null
+    _avg: ClienteAvgAggregateOutputType | null
+    _sum: ClienteSumAggregateOutputType | null
     _min: ClienteMinAggregateOutputType | null
     _max: ClienteMaxAggregateOutputType | null
+  }
+
+  export type ClienteAvgAggregateOutputType = {
+    telefone: number | null
+  }
+
+  export type ClienteSumAggregateOutputType = {
+    telefone: number | null
   }
 
   export type ClienteMinAggregateOutputType = {
     id: string | null
     nome: string | null
     email: string | null
-    telefone: string | null
+    telefone: number | null
     adminId: string | null
   }
 
@@ -2071,7 +2081,7 @@ export namespace Prisma {
     id: string | null
     nome: string | null
     email: string | null
-    telefone: string | null
+    telefone: number | null
     adminId: string | null
   }
 
@@ -2084,6 +2094,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type ClienteAvgAggregateInputType = {
+    telefone?: true
+  }
+
+  export type ClienteSumAggregateInputType = {
+    telefone?: true
+  }
 
   export type ClienteMinAggregateInputType = {
     id?: true
@@ -2148,6 +2166,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ClienteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ClienteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ClienteMinAggregateInputType
@@ -2178,6 +2208,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ClienteCountAggregateInputType | true
+    _avg?: ClienteAvgAggregateInputType
+    _sum?: ClienteSumAggregateInputType
     _min?: ClienteMinAggregateInputType
     _max?: ClienteMaxAggregateInputType
   }
@@ -2186,9 +2218,11 @@ export namespace Prisma {
     id: string
     nome: string
     email: string
-    telefone: string | null
+    telefone: number
     adminId: string
     _count: ClienteCountAggregateOutputType | null
+    _avg: ClienteAvgAggregateOutputType | null
+    _sum: ClienteSumAggregateOutputType | null
     _min: ClienteMinAggregateOutputType | null
     _max: ClienteMaxAggregateOutputType | null
   }
@@ -2245,7 +2279,7 @@ export namespace Prisma {
       id: string
       nome: string
       email: string
-      telefone: string | null
+      telefone: number
       adminId: string
     }, ExtArgs["result"]["cliente"]>
     composites: {}
@@ -2644,7 +2678,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Cliente", 'String'>
     readonly nome: FieldRef<"Cliente", 'String'>
     readonly email: FieldRef<"Cliente", 'String'>
-    readonly telefone: FieldRef<"Cliente", 'String'>
+    readonly telefone: FieldRef<"Cliente", 'Int'>
     readonly adminId: FieldRef<"Cliente", 'String'>
   }
     
@@ -4120,6 +4154,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -4134,16 +4182,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'Float'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'Float[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -4202,7 +4250,7 @@ export namespace Prisma {
     id?: StringFilter<"Cliente"> | string
     nome?: StringFilter<"Cliente"> | string
     email?: StringFilter<"Cliente"> | string
-    telefone?: StringNullableFilter<"Cliente"> | string | null
+    telefone?: IntFilter<"Cliente"> | number
     adminId?: StringFilter<"Cliente"> | string
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     carros?: CarroListRelationFilter
@@ -4225,7 +4273,7 @@ export namespace Prisma {
     OR?: ClienteWhereInput[]
     NOT?: ClienteWhereInput | ClienteWhereInput[]
     nome?: StringFilter<"Cliente"> | string
-    telefone?: StringNullableFilter<"Cliente"> | string | null
+    telefone?: IntFilter<"Cliente"> | number
     adminId?: StringFilter<"Cliente"> | string
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     carros?: CarroListRelationFilter
@@ -4238,8 +4286,10 @@ export namespace Prisma {
     telefone?: SortOrder
     adminId?: SortOrder
     _count?: ClienteCountOrderByAggregateInput
+    _avg?: ClienteAvgOrderByAggregateInput
     _max?: ClienteMaxOrderByAggregateInput
     _min?: ClienteMinOrderByAggregateInput
+    _sum?: ClienteSumOrderByAggregateInput
   }
 
   export type ClienteScalarWhereWithAggregatesInput = {
@@ -4249,7 +4299,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Cliente"> | string
     nome?: StringWithAggregatesFilter<"Cliente"> | string
     email?: StringWithAggregatesFilter<"Cliente"> | string
-    telefone?: StringNullableWithAggregatesFilter<"Cliente"> | string | null
+    telefone?: IntWithAggregatesFilter<"Cliente"> | number
     adminId?: StringWithAggregatesFilter<"Cliente"> | string
   }
 
@@ -4359,7 +4409,7 @@ export namespace Prisma {
     id?: string
     nome: string
     email: string
-    telefone?: string | null
+    telefone: number
     admin: AdminCreateNestedOneWithoutClientesInput
     carros?: CarroCreateNestedManyWithoutClienteInput
   }
@@ -4368,7 +4418,7 @@ export namespace Prisma {
     id?: string
     nome: string
     email: string
-    telefone?: string | null
+    telefone: number
     adminId: string
     carros?: CarroUncheckedCreateNestedManyWithoutClienteInput
   }
@@ -4376,7 +4426,7 @@ export namespace Prisma {
   export type ClienteUpdateInput = {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
+    telefone?: IntFieldUpdateOperationsInput | number
     admin?: AdminUpdateOneRequiredWithoutClientesNestedInput
     carros?: CarroUpdateManyWithoutClienteNestedInput
   }
@@ -4384,7 +4434,7 @@ export namespace Prisma {
   export type ClienteUncheckedUpdateInput = {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
+    telefone?: IntFieldUpdateOperationsInput | number
     adminId?: StringFieldUpdateOperationsInput | string
     carros?: CarroUncheckedUpdateManyWithoutClienteNestedInput
   }
@@ -4393,20 +4443,20 @@ export namespace Prisma {
     id?: string
     nome: string
     email: string
-    telefone?: string | null
+    telefone: number
     adminId: string
   }
 
   export type ClienteUpdateManyMutationInput = {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
+    telefone?: IntFieldUpdateOperationsInput | number
   }
 
   export type ClienteUncheckedUpdateManyInput = {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
+    telefone?: IntFieldUpdateOperationsInput | number
     adminId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -4529,20 +4579,15 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-    isSet?: boolean
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type AdminScalarRelationFilter = {
@@ -4568,6 +4613,10 @@ export namespace Prisma {
     adminId?: SortOrder
   }
 
+  export type ClienteAvgOrderByAggregateInput = {
+    telefone?: SortOrder
+  }
+
   export type ClienteMaxOrderByAggregateInput = {
     id?: SortOrder
     nome?: SortOrder
@@ -4584,23 +4633,24 @@ export namespace Prisma {
     adminId?: SortOrder
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-    isSet?: boolean
+  export type ClienteSumOrderByAggregateInput = {
+    telefone?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -4726,9 +4776,12 @@ export namespace Prisma {
     connect?: CarroWhereUniqueInput | CarroWhereUniqueInput[]
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-    unset?: boolean
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type AdminUpdateOneRequiredWithoutClientesNestedInput = {
@@ -4827,49 +4880,31 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-    isSet?: boolean
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-    isSet?: boolean
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-    isSet?: boolean
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -4901,7 +4936,7 @@ export namespace Prisma {
     id?: string
     nome: string
     email: string
-    telefone?: string | null
+    telefone: number
     carros?: CarroCreateNestedManyWithoutClienteInput
   }
 
@@ -4909,7 +4944,7 @@ export namespace Prisma {
     id?: string
     nome: string
     email: string
-    telefone?: string | null
+    telefone: number
     carros?: CarroUncheckedCreateNestedManyWithoutClienteInput
   }
 
@@ -4945,7 +4980,7 @@ export namespace Prisma {
     id?: StringFilter<"Cliente"> | string
     nome?: StringFilter<"Cliente"> | string
     email?: StringFilter<"Cliente"> | string
-    telefone?: StringNullableFilter<"Cliente"> | string | null
+    telefone?: IntFilter<"Cliente"> | number
     adminId?: StringFilter<"Cliente"> | string
   }
 
@@ -5044,7 +5079,7 @@ export namespace Prisma {
     id?: string
     nome: string
     email: string
-    telefone?: string | null
+    telefone: number
     admin: AdminCreateNestedOneWithoutClientesInput
   }
 
@@ -5052,7 +5087,7 @@ export namespace Prisma {
     id?: string
     nome: string
     email: string
-    telefone?: string | null
+    telefone: number
     adminId: string
   }
 
@@ -5075,14 +5110,14 @@ export namespace Prisma {
   export type ClienteUpdateWithoutCarrosInput = {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
+    telefone?: IntFieldUpdateOperationsInput | number
     admin?: AdminUpdateOneRequiredWithoutClientesNestedInput
   }
 
   export type ClienteUncheckedUpdateWithoutCarrosInput = {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
+    telefone?: IntFieldUpdateOperationsInput | number
     adminId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -5090,27 +5125,27 @@ export namespace Prisma {
     id?: string
     nome: string
     email: string
-    telefone?: string | null
+    telefone: number
   }
 
   export type ClienteUpdateWithoutAdminInput = {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
+    telefone?: IntFieldUpdateOperationsInput | number
     carros?: CarroUpdateManyWithoutClienteNestedInput
   }
 
   export type ClienteUncheckedUpdateWithoutAdminInput = {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
+    telefone?: IntFieldUpdateOperationsInput | number
     carros?: CarroUncheckedUpdateManyWithoutClienteNestedInput
   }
 
   export type ClienteUncheckedUpdateManyWithoutAdminInput = {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
+    telefone?: IntFieldUpdateOperationsInput | number
   }
 
   export type CarroCreateManyClienteInput = {

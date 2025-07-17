@@ -1,69 +1,31 @@
-import { PrismaClient } from '../generated/prisma/index.js';
 import express from 'express';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import { registrarAdmin, loginAdmin } from '../services/AdminService.js';
 
-const prisma = new PrismaClient();
 const router = express.Router();
-
 
 router.post('/register', async (req, res) => {
     try {
-        const { email, password } = req.body;
-
-        if (!email || !password) {
-            return res.status(400).json({ message: "Email e senha são obrigatórios." });
-        }
-
-        const salt = await bcrypt.genSalt(10);
-        const hashPassword = await bcrypt.hash(password, salt);
-
-        const newAdmin = await prisma.admin.create({
-            data: {
-                email: email,
-                password: hashPassword
-            }
-        });
-
-        res.status(201).json({ email: newAdmin.email });
+        const adminCriado = await registrarAdmin(req.body);
+        res.status(201).json(adminCriado);
         console.log('Admin Criado com Sucesso!');
-
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: `Erro no Servidor: ${error.message}` });
+        res.status(400).json({ message: `Erro ao criar Admin: ${error.message}` });
     }
 });
 
-
 router.post('/login', async (req, res) => {
     try {
-        const { email, password } = req.body;
-
-        const admin = await prisma.admin.findUnique({
-            where: { email: email }
-        });
-
-        
-        if (!admin) {
-            return res.status(404).json({ message: 'Credenciais inválidas' }); 
-        }
-
-        const isMatch = await bcrypt.compare(password, admin.password);
-
-        if (!isMatch) {
-            return res.status(401).json({ message: 'Credenciais inválidas' }); 
-        }
-
-        const token = jwt.sign(
-            { id: admin.id },
-            process.env.JWT_SECRET, 
-            { expiresIn: '7d' }
-        );
-
-        res.status(200).json({ token });
-
+        const resultado = await loginAdmin(req.body);
+        res.status(200).json({ token: resultado.token });
     } catch (error) {
-        console.error("Erro no login:", error);
+        console.error("Erro no login:", error)
+        if (error.message === "Email e senha são obrigatórios.") {
+            return res.status(400).json({ message: error.message });
+        }
+        if (error.message === "Credenciais inválidas") {
+            return res.status(401).json({ message: error.message });
+        }
         res.status(500).json({ message: 'Erro interno no servidor.' });
     }
 });

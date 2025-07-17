@@ -1,36 +1,32 @@
-import { PrismaClient } from '../generated/prisma/index.js';
 import express from 'express'
+import { registrarCliente, listarClientes } from '../services/ClienteService.js'
 
-const prisma = new PrismaClient()
 const router = express.Router()
 
 router.post('/registrar', async (req, res) =>{
     try {
-        const { nome, email, telefone } = req.body
-        const adminId = req.userId 
-        
-        const cliente = await prisma.cliente.create({
-            data: {
-                nome: nome,
-                email: email,
-                telefone: telefone,
-                adminId: adminId 
-            }
-        })
-
-             if(!cliente){
-                return res.status(400).json({message: 'Não foi possivel cadastrar o cliete!'})
-             }
-             console.log('Cliente Cadastrado com Sucesso!')
-             res.status(201).json({message: 'Cliente cadastrado com Sucesso!'})
-
+        const dadosCliente = req.body
+        const adminId = req.adminId
+        const cliente = await registrarCliente(dadosCliente, adminId)
+        res.status(201).json(cliente);
+        console.log('Cliente registrado com sucesso!')
     } catch (error) {
         console.log(`Erro ao cadastrar cliente: ${error.message}`)
         res.status(401).json({message: `Não foi possível cadastrar um cliente: ${error.message}`})
-        
     }
 })
 
 
+router.get('/listar', async (req, res) => {
+    try {
+        const adminId = req.adminId
+        const listaClientes = await listarClientes(adminId)
+        res.status(200).json(listaClientes)
+        console.log('Clientes Listados com sucesso!')
+    } catch (error) {
+        console.log(`Erro ao listar clientes: ${error.message}`)
+        res.status(500).json({message: `Erro ao listar clientes: ${error.message}`})
+    }
+})
 
 export default router
