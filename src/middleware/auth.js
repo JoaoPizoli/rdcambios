@@ -1,6 +1,9 @@
 import jwt from 'jsonwebtoken';
+import { PrismaClient } from '../generated/prisma/index.js';
 
-const auth = (req, res, next) => {
+const prisma = new PrismaClient();
+
+const auth = async (req, res, next) => {
     const authHeader = req.headers.authorization;
 
     if (!authHeader) {
@@ -20,6 +23,15 @@ const auth = (req, res, next) => {
     }
     
     try {
+        // Verificar se o token está na blacklist
+        const blacklistedToken = await prisma.tokenBlacklist.findUnique({
+            where: { token }
+        });
+
+        if (blacklistedToken) {
+            return res.status(401).json({ message: 'Token foi invalidado. Faça login novamente.' });
+        }
+
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         
         req.adminId = decoded.id; 

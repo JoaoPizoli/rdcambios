@@ -1,5 +1,6 @@
 import express from 'express';
-import { registrarAdmin, loginAdmin } from '../services/AdminService.js';
+import { registrarAdmin, loginAdmin, logoutAdmin } from '../services/AdminService.js';
+import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -26,6 +27,20 @@ router.post('/login', async (req, res) => {
         if (error.message === "Credenciais inválidas") {
             return res.status(401).json({ message: error.message });
         }
+        res.status(500).json({ message: 'Erro interno no servidor.' });
+    }
+});
+
+router.post('/logout', auth, async (req, res) => {
+    try {
+        // Extrair o token do header Authorization
+        const authHeader = req.headers.authorization;
+        const token = authHeader.split(' ')[1]; // Pega apenas o token, sem o "Bearer"
+
+        const resultado = await logoutAdmin(token);
+        res.status(200).json(resultado);
+    } catch (error) {
+        console.error("Erro no logout:", error);
         res.status(500).json({ message: 'Erro interno no servidor.' });
     }
 });

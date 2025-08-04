@@ -59,4 +59,47 @@ async function loginAdmin(credenciais) {
     return { token, adminId: admin.id };
 }
 
-export { registrarAdmin, loginAdmin };
+async function logoutAdmin(token) {
+    try {
+        // Decodificar o token para obter a data de expiração
+        const decoded = jwt.decode(token);
+        
+        if (!decoded) {
+            throw new Error("Token inválido");
+        }
+
+        // Converter timestamp para Date
+        const expiresAt = new Date(decoded.exp * 1000);
+
+        // Adicionar token à blacklist
+        await prisma.tokenBlacklist.create({
+            data: {
+                token: token,
+                expiresAt: expiresAt
+            }
+        });
+
+        return { message: "Logout realizado com sucesso" };
+    } catch (error) {
+        throw new Error("Erro ao realizar logout: " + error.message);
+    }
+}
+
+async function clearExpiredTokens() {
+    try {
+        const now = new Date();
+        const result = await prisma.tokenBlacklist.deleteMany({
+            where: {
+                expiresAt: {
+                    lt: now
+                }
+            }
+        });
+        console.log(`${result.count} tokens expirados removidos da blacklist`);
+        return result;
+    } catch (error) {
+        console.error("Erro ao limpar tokens expirados:", error);
+    }
+}
+
+export { registrarAdmin, loginAdmin, logoutAdmin, clearExpiredTokens };

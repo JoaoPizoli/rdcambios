@@ -16,6 +16,13 @@ model Admin {
   clientes Cliente[]                       
 }
 
+model TokenBlacklist {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
 
 model Cliente {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
