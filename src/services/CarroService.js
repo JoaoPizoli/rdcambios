@@ -30,10 +30,9 @@ async function cadastrarCarro(dadosCarro, idAdmin){
 }
 
 
-async function listarCarrosClientes(idCliente, idAdmin){
-    const clienteId  = idCliente
+async function listarCarrosClientes(dadosCliente, idAdmin){
+    const { clienteId }  = dadosCliente
     const adminId = idAdmin
-
     const cliente = await prisma.cliente.findFirst({
     where: {
         id: clienteId,
