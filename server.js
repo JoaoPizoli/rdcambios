@@ -5,13 +5,13 @@ import adminRoutes from './src/router/adminRoutes.js';
 import clienteRoutes from './src/router/clienteRoutes.js'
 import carroRoutes from './src/router/carroRoutes.js'
 import auth from './src/middleware/auth.js';
-
+import trocarOleoRoutes from './src/router/trocarOleoRoutes.js'
 const app = express()
 
 app.use(express.json())
 
 app.use('/admin',adminRoutes)
-
+app.use('/oleo', auth, trocarOleoRoutes)
 app.use('/clientes', auth, clienteRoutes)
 app.use('/carros', auth, carroRoutes)
 
