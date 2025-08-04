@@ -18,9 +18,9 @@ router.post('/cadastrar', async (req,res)=>{
 
 
 //Lista os carros registrados ao cliente
-router.get('/cliente/:clienteId', async (req, res) => {
+router.post('/cliente', async (req, res) => {
     try {
-        const clienteId = req.params.clienteId
+        const clienteId = req.body
         const adminId = req.adminId
         const listaCarros = await listarCarrosClientes(clienteId, adminId)
         res.status(201).json(listaCarros)
