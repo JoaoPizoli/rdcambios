@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 async function criarTrocaOleo(dadosOleo, carroId){
     const { oleoDataTroca, oleoDataProximaTroca } = dadosOleo
     const idCarro = carroId
-    const status = True
+    const status = true
 
     const carro = await prisma.carro.findFirst({
         where: {
