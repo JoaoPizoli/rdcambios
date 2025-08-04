@@ -1,13 +1,16 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
+import cors from 'cors'
 import adminRoutes from './src/router/adminRoutes.js';
 import clienteRoutes from './src/router/clienteRoutes.js'
 import carroRoutes from './src/router/carroRoutes.js'
 import auth from './src/middleware/auth.js';
 import trocarOleoRoutes from './src/router/trocarOleoRoutes.js'
 const app = express()
-
+app.use(cors({
+    origin:'*'
+}))
 app.use(express.json())
 
 app.use('/admin',adminRoutes)
