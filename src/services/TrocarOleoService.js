@@ -31,8 +31,8 @@ async function criarTrocaOleo(dadosOleo, carroId){
 }
 
 
-async function listarTrocaOleoAtivas(carroId){
-    const idCarro = carroId
+async function listarTrocaOleoAtivas(dadosCarro){
+    const { idCarro } = dadosCarro
     const carro = await prisma.carro.findFirst({
         where:{
             id: idCarro

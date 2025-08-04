@@ -17,9 +17,9 @@ router.post('/registrar/:carroId', async (req, res) =>{
     }
 })
 
-router.get('/listar/:carroId', async (req,res) =>{
+router.get('/listar', async (req,res) =>{
     try {
-        const carroId = req.params.carroId
+        const carroId  = req.body
         const trocas = await listarTrocaOleoAtivas(carroId)
         res.status(200).json(trocas)
         console.log('Trocas listadas com Sucesso!')
