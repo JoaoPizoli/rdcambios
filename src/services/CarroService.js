@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 
 async function cadastrarCarro(dadosCarro, idAdmin){
-    const {placa, modelo, oleoDataTroca, oleoDataProximaTroca, clienteId} = dadosCarro
+    const {placa, modelo, clienteId} = dadosCarro
     const adminId = idAdmin
 
     const cliente = await prisma.cliente.findFirst({
@@ -22,13 +22,11 @@ async function cadastrarCarro(dadosCarro, idAdmin){
         data: {
             placa: placa,
             modelo: modelo,
-            oleoDataTroca: new Date(oleoDataTroca),
-            oleoDataProximaTroca: new Date(oleoDataProximaTroca),
             clienteId: clienteId
         }
     })
 
-    return { placa: carro.placa, modelo: carro.modelo, oleoDataTroca: carro.oleoDataTroca, oleoDataProximaTroca: carro.oleoDataProximaTroca}
+    return { placa: carro.placa, modelo: carro.modelo}
 }
 
 
