@@ -2,14 +2,12 @@ import { PrismaClient } from '../generated/prisma/index.js';
 
 const prisma = new PrismaClient()
 
-async function criarTrocaOleo(dadosOleo, carroId){
-    const { oleoDataTroca, oleoDataProximaTroca } = dadosOleo
-    const idCarro = carroId
+async function criarTrocaOleo(dadosOleo){
+    const { oleoDataTroca, oleoDataProximaTroca, carroId } = dadosOleo
     const status = true
-
     const carro = await prisma.carro.findFirst({
         where: {
-            id: idCarro
+            id: carroId
         }
     })
 
@@ -22,7 +20,7 @@ async function criarTrocaOleo(dadosOleo, carroId){
             oleoDataTroca: oleoDataTroca,
             oleoDataProximaTroca: oleoDataProximaTroca,
             status: status,
-            carroId: idCarro
+            carroId: carroId
         }
     })
 

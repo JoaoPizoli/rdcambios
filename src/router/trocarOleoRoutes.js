@@ -4,11 +4,10 @@ import { criarTrocaOleo, listarTrocaOleoAtivas } from '../services/TrocarOleoSer
 
 const router = express.Router()
 
-router.post('/registrar/:carroId', async (req, res) =>{
+router.post('/registrar', async (req, res) =>{
     try {
         const dadosOleo = req.body
-        const carroId = req.params.carroId
-        const criarTroca = await criarTrocaOleo(dadosOleo, carroId)
+        const criarTroca = await criarTrocaOleo(dadosOleo)
         res.status(201).json(criarTroca)
         console.log('Troca de Óleo registrada com sucesso!')
     } catch (error) {
