@@ -21,7 +21,8 @@ async function criarTrocaOleo(dadosOleo, carroId){
         data: {
             oleoDataTroca: oleoDataTroca,
             oleoDataProximaTroca: oleoDataProximaTroca,
-            status: status
+            status: status,
+            carroId: idCarro
         }
     })
 
@@ -43,7 +44,7 @@ async function listarTrocaOleoAtivas(carroId){
     const troca = await prisma.TrocaOleo.findMany({
         where:{
             carroId: idCarro,
-            status: True
+            status: true
         }
     })
     return troca
