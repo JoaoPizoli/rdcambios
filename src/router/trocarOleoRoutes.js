@@ -16,7 +16,7 @@ router.post('/registrar', async (req, res) =>{
     }
 })
 
-router.get('/listar', async (req,res) =>{
+router.post('/listar', async (req,res) =>{
     try {
         const carroId  = req.body
         const trocas = await listarTrocaOleoAtivas(carroId)
