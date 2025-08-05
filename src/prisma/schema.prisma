@@ -41,6 +41,9 @@ model TrocaOleo {
   id String  @id @default(auto()) @map("_id") @db.ObjectId
   oleoDataTroca         DateTime
   oleoDataProximaTroca  DateTime
+  kmTroca Int
+  KmProximaTroca Int
+  tipoOleo String
   carroId String @db.ObjectId
   status Boolean
   carro Carro @relation(fields: [carroId], references: [id])
