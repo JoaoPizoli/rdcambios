@@ -1,5 +1,5 @@
 import express from 'express'
-import { registrarCliente, listarClientes } from '../services/ClienteService.js'
+import { registrarCliente, listarClientes, deleteCliente, updateCliente } from '../services/ClienteService.js'
 
 const router = express.Router()
 
@@ -26,6 +26,30 @@ router.get('/listar', async (req, res) => {
     } catch (error) {
         console.log(`Erro ao listar clientes: ${error.message}`)
         res.status(500).json({message: `Erro ao listar clientes: ${error.message}`})
+    }
+})
+
+router.delete('/deletar', async (req,res)=>{
+    try {
+        const idCliente = req.body
+        const clienteDeletado = await deleteCliente(idCliente)
+        res.status(204).json(clienteDeletado)
+        console.log('Cliente deletado com sucesso!')
+    } catch (error) {
+        res.status(500).json({message: `Erro ao deletar cliente: ${error.message}`})
+        console.log(`Erro ao deletar cliente: ${error.message}`)
+        }
+})
+
+router.patch('/update', async (req,res)=>{
+    try {
+        const dadosUpdate = req.body
+        const clienteUpdated = await updateCliente(dadosUpdate)
+        res.status(200).json(clienteUpdated)
+        console.log('Dados do cliente alerados com sucesso!')
+    } catch (error) {
+        res.status(500).json({message: `Erro ao alterar os dados do cliente: ${error.message}`})
+        console.log(`Erro ao alterar os dados do cliente: ${error.message}`)
     }
 })
 

@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { criarTrocaOleo, listarTrocaOleoAtivas } from '../services/TrocarOleoService.js'
+import { criarTrocaOleo, listarTrocaOleoAtivas, deleteTrocaOleo, statusTrocaOleo, updateTrocaOleo } from '../services/TrocarOleoService.js'
 
 const router = express.Router()
 
@@ -25,6 +25,41 @@ router.post('/listar', async (req,res) =>{
     } catch (error) {
         console.log(`Erro ao listar as trocas de óleo: ${error.message}`)
         res.status(500).json({message: `Erro ao listar as trocas de óleo: ${error.message}`})
+    }
+})
+
+router.delete('/deletar', async (req,res)=>{
+    try {
+        const idOleo = req.body
+        const deletarTroca = await deleteTrocaOleo(idOleo)
+        res.status(204).json(deletarTroca)
+        console.log('Troca de óleo deletada com Sucesso!')
+    } catch (error) {
+        console.log(`Errp ap deletar a troca de óleo: ${error.message}`)
+        res.status(500).json({message: `Erro ao deletar a troca de óleo: ${error.message}`})
+    }
+})
+
+router.patch('/verificarStatus', async (req,res)=>{
+    try {
+        const carroId = req.body
+        const trocaStatus = await statusTrocaOleo(carroId)
+        res.status(200).json(trocaStatus)
+        console.log('Status da troca de óleo alterado para Falso!')
+    } catch (error) {
+        res.status(500).json({message: `Erro ao alterar o status da troca de óleo: ${error.message}`})
+    }
+})
+
+router.patch('/update', async (req,res)=>{
+    try {
+        const dadosUpdate = req.body
+        const update = await updateTrocaOleo(dadosUpdate)
+        res.status(200).json(update)
+        console.log('Data(s) da troca de óleo atualizadas com sucesso!')
+    } catch (error) {
+        res.status(500).json({message: `Erro ao atualizar os dados da troca de óleo: ${error.message}`})
+        console.log(`Erro ao fazer o update da troca de óleo: ${error.message}`)
     }
 })
 

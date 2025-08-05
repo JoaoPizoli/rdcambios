@@ -61,5 +61,28 @@ async function listarCarrosClientes(dadosCliente, idAdmin){
     return carros
 }
 
+async function deleteCarro(idCarro){
+    const carroId = idCarro
+    const carroDeletado = await prisma.carro.delete({
+        where:{
+            id: carroId
+        }
+    })
+    return carroDeletado
+}
 
-export { cadastrarCarro, listarCarrosClientes }
+async function updateCarro(dadosCarro){
+    const { placa, modelo, id } = dadosCarro ?? {}
+    const dados = {}
+    if(placa !== undefined) dados.placa = placa
+    if(modelo!== undefined) dados.modelo = modelo
+    const updateCarro = await prisma.carro.update({
+        where:{
+            id: id
+        },
+        data: dados
+    })
+    return updateCarro    
+}
+
+export { cadastrarCarro, listarCarrosClientes, deleteCarro, updateCarro }
