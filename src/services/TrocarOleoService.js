@@ -3,7 +3,7 @@ import { PrismaClient } from '../generated/prisma/index.js';
 const prisma = new PrismaClient()
 
 async function criarTrocaOleo(dadosOleo){
-    const { oleoDataTroca, oleoDataProximaTroca, carroId } = dadosOleo
+    const { oleoDataTroca, oleoDataProximaTroca, kmTroca, KmProximaTroca, tipoOleo,  carroId } = dadosOleo
     const status = true
     const carro = await prisma.carro.findFirst({
         where: {
@@ -19,12 +19,22 @@ async function criarTrocaOleo(dadosOleo){
         data: {
             oleoDataTroca: oleoDataTroca,
             oleoDataProximaTroca: oleoDataProximaTroca,
+            kmTroca: kmTroca,
+            KmProximaTroca: KmProximaTroca,
+            tipoOleo: tipoOleo,
             status: status,
             carroId: carroId
         }
     })
 
-    return { trocaOleo: trocaOleo.oleoDataTroca, oleoDataProximaTroca: trocaOleo.oleoDataProximaTroca, status: trocaOleo.status }
+    return { 
+        trocaOleo: trocaOleo.oleoDataTroca, 
+        oleoDataProximaTroca: trocaOleo.oleoDataProximaTroca,
+        kmTroca:trocaOleo.kmTroca,
+        KmProximaTroca: trocaOleo.KmProximaTroca,
+        tipoOleo: trocaOleo.tipoOleo,
+        status: trocaOleo.status
+     }
 
 }
 
@@ -93,7 +103,7 @@ async function statusTrocaOleo(idCarro) {
 
 
 async function updateTrocaOleo(dadosUpdate){
-    const { oleoDataTroca, oleoDataProximaTroca, idCarro } = dadosUpdate ?? {}
+    const { oleoDataTroca, oleoDataProximaTroca, kmTroca, KmProximaTroca, tipoOleo, idCarro } = dadosUpdate ?? {}
     const trocasAtivas = await listarTrocaOleoAtivas(idCarro)
     if (!trocasAtivas) {
     console.log('Não há troca de óleo ativa para esse carro.');
@@ -103,6 +113,9 @@ async function updateTrocaOleo(dadosUpdate){
     const dados = {}
     if( oleoDataTroca !== undefined) dados.oleoDataTroca = oleoDataTroca
     if( oleoDataProximaTroca !== undefined) dados.oleoDataProximaTroca = oleoDataProximaTroca
+    if( kmTroca !== undefined) dados.kmTroca = kmTroca
+    if( KmProximaTroca !== undefined) dados.KmProximaTroca = KmProximaTroca
+    if( tipoOleo !== undefined) dados.tipoOleo = tipoOleo
     const updateTroca = await prisma.TrocaOleo.update({
         where: {
             id: id

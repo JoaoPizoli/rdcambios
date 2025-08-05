@@ -8,12 +8,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Admin {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   email    String    @unique
   password String
-  clientes Cliente[]                       
+  clientes Cliente[]
 }
 
 model TokenBlacklist {
@@ -23,44 +22,42 @@ model TokenBlacklist {
   createdAt DateTime @default(now())
 }
 
-
 model Cliente {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
   nome     String
-  email    String   @unique
-  telefone Int 
+  email    String @unique
+  telefone Int
 
-  adminId  String   @db.ObjectId         
-  admin    Admin    @relation(fields: [adminId], references: [id])
+  adminId String @db.ObjectId
+  admin   Admin  @relation(fields: [adminId], references: [id])
 
-  carros   Carro[]                       
-  @@index([adminId])                      
+  carros Carro[]
+
+  @@index([adminId])
 }
 
 model TrocaOleo {
-  id String  @id @default(auto()) @map("_id") @db.ObjectId
-  oleoDataTroca         DateTime
-  oleoDataProximaTroca  DateTime
-  kmTroca Int
-  KmProximaTroca Int
-  tipoOleo String
-  carroId String @db.ObjectId
-  status Boolean
-  carro Carro @relation(fields: [carroId], references: [id])
+  id                   String   @id @default(auto()) @map("_id") @db.ObjectId
+  oleoDataTroca        DateTime
+  oleoDataProximaTroca DateTime
+  kmTroca              Int
+  KmProximaTroca       Int
+  tipoOleo             String
+  carroId              String   @db.ObjectId
+  status               Boolean
+  carro                Carro    @relation(fields: [carroId], references: [id])
 
   @@index([carroId])
-
 }
 
-
 model Carro {
-  id                    String      @id @default(auto()) @map("_id") @db.ObjectId
-  placa                 String      @unique
-  modelo                String
-  clienteId             String      @db.ObjectId
-  cliente               Cliente     @relation(fields: [clienteId], references: [id])
-  
-  trocasOleo            TrocaOleo[]
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  placa     String  @unique
+  modelo    String
+  clienteId String  @db.ObjectId
+  cliente   Cliente @relation(fields: [clienteId], references: [id])
 
-  @@index([clienteId])                 
+  trocasOleo TrocaOleo[]
+
+  @@index([clienteId])
 }
