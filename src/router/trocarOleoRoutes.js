@@ -60,8 +60,8 @@ router.patch('/update', async (req,res)=>{
 
 router.post('/listar', async(req,res)=>{
     try {
-        const clienteId = req.body
-        const lista = await listarTrocas(clienteId)
+        const idCarro = req.body
+        const lista = await listarTrocas(idCarro)
         res.status(200).json(lista)
     } catch (error) {
         console.log(`Erro ao listar as trocas disponíveis para o Cliente: ${error.message} `)
