@@ -1,6 +1,12 @@
 import express from 'express'
 
-import { criarTrocaOleo, listarTrocaOleoAtivas, deleteTrocaOleo, statusTrocaOleo, updateTrocaOleo, listarTrocasCliente } from '../services/TrocarOleoService.js'
+import { 
+    criarTrocaOleo, 
+    listarTrocas, 
+    deleteTrocaOleo,
+    statusTrocaOleo,
+    updateTrocaOleo
+} from '../services/TrocarOleoService.js'
 
 const router = express.Router()
 
@@ -13,18 +19,6 @@ router.post('/registrar', async (req, res) =>{
     } catch (error) {
         console.log(`Erro ao cadastrar troca de óleo: ${error.message}`)
         res.status(401).json({message: `Não foi possível cadastrar a troca de óleo: ${error.message}`})
-    }
-})
-
-router.post('/listarAtivo', async (req,res) =>{
-    try {
-        const carroId  = req.body
-        const trocas = await listarTrocaOleoAtivas(carroId)
-        res.status(200).json(trocas)
-        console.log('Trocas listadas com Sucesso!')
-    } catch (error) {
-        console.log(`Erro ao listar as trocas de óleo: ${error.message}`)
-        res.status(500).json({message: `Erro ao listar as trocas de óleo: ${error.message}`})
     }
 })
 
@@ -67,7 +61,7 @@ router.patch('/update', async (req,res)=>{
 router.post('/listar', async(req,res)=>{
     try {
         const clienteId = req.body
-        const lista = await listarTrocasCliente(clienteId)
+        const lista = await listarTrocas(clienteId)
         res.status(200).json(lista)
     } catch (error) {
         console.log(`Erro ao listar as trocas disponíveis para o Cliente: ${error.message} `)

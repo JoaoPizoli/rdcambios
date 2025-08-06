@@ -39,7 +39,7 @@ async function criarTrocaOleo(dadosOleo){
 }
 
 
-async function listarTrocaOleoAtivas(idCarro){
+async function listarTrocas(idCarro){
     const carro = await prisma.carro.findFirst({
         where:{
             id: idCarro
@@ -48,26 +48,12 @@ async function listarTrocaOleoAtivas(idCarro){
     if (!carro) {
         throw new Error('Carro não encontrado ou não pertence a este cliente!')
     }
-    const troca = await prisma.TrocaOleo.findFirst({
+    const troca = await prisma.TrocaOleo.findMany({
         where:{
             carroId: idCarro,
-            status: true
         }
     })
     return troca
-}
-
-
-async function listarTrocasCliente(idCliente){
-    const trocas = await prisma.TrocaOleo.findMany({
-        where: {
-            clienteId: idCliente
-        }
-    })
-    if(!trocas){
-        throw new Error('Erro ao listar todas as trocas pelo Cliente!')
-    }
-    return trocas
 }
 
 
@@ -138,4 +124,4 @@ async function updateTrocaOleo(dadosUpdate){
     return updateTroca
 }
 
-export { criarTrocaOleo, listarTrocaOleoAtivas, deleteTrocaOleo, statusTrocaOleo, updateTrocaOleo, listarTrocasCliente }
+export { criarTrocaOleo, deleteTrocaOleo, statusTrocaOleo, updateTrocaOleo, listarTrocas}
