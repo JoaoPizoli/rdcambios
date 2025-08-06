@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { criarTrocaOleo, listarTrocaOleoAtivas, deleteTrocaOleo, statusTrocaOleo, updateTrocaOleo } from '../services/TrocarOleoService.js'
+import { criarTrocaOleo, listarTrocaOleoAtivas, deleteTrocaOleo, statusTrocaOleo, updateTrocaOleo, listarTrocasCliente } from '../services/TrocarOleoService.js'
 
 const router = express.Router()
 
@@ -16,7 +16,7 @@ router.post('/registrar', async (req, res) =>{
     }
 })
 
-router.post('/listar', async (req,res) =>{
+router.post('/listarAtivo', async (req,res) =>{
     try {
         const carroId  = req.body
         const trocas = await listarTrocaOleoAtivas(carroId)
@@ -60,6 +60,18 @@ router.patch('/update', async (req,res)=>{
     } catch (error) {
         res.status(500).json({message: `Erro ao atualizar os dados da troca de óleo: ${error.message}`})
         console.log(`Erro ao fazer o update da troca de óleo: ${error.message}`)
+    }
+})
+
+
+router.post('/listar', async(req,res)=>{
+    try {
+        const clienteId = req.body
+        const lista = await listarTrocasCliente(clienteId)
+        res.status(200).json(lista)
+    } catch (error) {
+        console.log(`Erro ao listar as trocas disponíveis para o Cliente: ${error.message} `)
+        res.status(500).json({message:`Erro ao listar as trocas disponíveis para o Cliente: ${error.message}`})
     }
 })
 
