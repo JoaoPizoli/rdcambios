@@ -1,12 +1,6 @@
 import express from 'express'
 
-import { 
-    criarTrocaOleo, 
-    listarTrocas, 
-    deleteTrocaOleo,
-    statusTrocaOleo,
-    updateTrocaOleo
-} from '../services/TrocarOleoService.js'
+import { criarTrocaOleo, listarTrocas, deleteTrocaOleo, statusTrocaOleo, updateTrocaOleo } from '../services/TrocarOleoService.js'
 
 const router = express.Router()
 
