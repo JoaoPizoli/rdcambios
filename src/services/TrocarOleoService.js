@@ -48,14 +48,16 @@ async function listarTrocas(dados){
     })
     if (!carro) {
         throw new Error('Carro não encontrado ou não pertence a este cliente!')
-    }
-    const idCarroCliente = carro.id
-    const troca = await prisma.TrocaOleo.findMany({
+    } else {
+        console.log(carro)
+        const idCarroCliente = carro.id
+        const troca = await prisma.TrocaOleo.findMany({
         where:{
             carroId: idCarroCliente,
         }
     })
     return troca
+    }
 }
 
 
