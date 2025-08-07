@@ -16,6 +16,9 @@ async function criarTrocaOleo(dadosOleo){
     }
 
     const trocaOleo = await prisma.TrocaOleo.create({
+        where:{
+            carroId: carroId
+        },
         data: {
             oleoDataTroca: oleoDataTroca,
             oleoDataProximaTroca: oleoDataProximaTroca,
