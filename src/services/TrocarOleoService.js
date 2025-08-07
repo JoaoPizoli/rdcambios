@@ -39,10 +39,11 @@ async function criarTrocaOleo(dadosOleo){
 }
 
 
-async function listarTrocas(idCarro){
+async function listarTrocas(dados){
+    const { carroId } = dados
     const carro = await prisma.carro.findFirst({
         where:{
-            id: idCarro
+            id: carroId
         }
     })
     if (!carro) {
@@ -50,7 +51,7 @@ async function listarTrocas(idCarro){
     }
     const troca = await prisma.TrocaOleo.findMany({
         where:{
-            carroId: idCarro,
+            carroId: carroId,
         }
     })
     return troca
