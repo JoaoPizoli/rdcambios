@@ -33,9 +33,8 @@ router.post('/login', async (req, res) => {
 
 router.post('/logout', auth, async (req, res) => {
     try {
-        // Extrair o token do header Authorization
         const authHeader = req.headers.authorization;
-        const token = authHeader.split(' ')[1]; // Pega apenas o token, sem o "Bearer"
+        const token = authHeader.split(' ')[1]; 
 
         const resultado = await logoutAdmin(token);
         res.status(200).json(resultado);
