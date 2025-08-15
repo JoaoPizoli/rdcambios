@@ -110,6 +110,7 @@ async function updateTrocaOleo(dadosUpdate){
     console.log('Não há troca de óleo ativa para esse carro.');
     return null;
      }
+    console.log(trocas)
     const { id } = trocas
     const dados = {}
     if( oleoDataTroca !== undefined) dados.oleoDataTroca = oleoDataTroca
