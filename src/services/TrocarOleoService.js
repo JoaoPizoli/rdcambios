@@ -104,14 +104,7 @@ async function statusTrocaOleo(idCarro) {
 
 
 async function updateTrocaOleo(dadosUpdate){
-    const { oleoDataTroca, oleoDataProximaTroca, kmTroca, KmProximaTroca, tipoOleo, carroId } = dadosUpdate ?? {}
-    const trocas = await listarTrocas(carroId)
-    if (!trocas) {
-    console.log('Não há troca de óleo ativa para esse carro.');
-    return null;
-     }
-    console.log(trocas)
-    const { id } = trocas
+    const { id, oleoDataTroca, oleoDataProximaTroca, kmTroca, KmProximaTroca, tipoOleo } = dadosUpdate ?? {}
     const dados = {}
     if( oleoDataTroca !== undefined) dados.oleoDataTroca = oleoDataTroca
     if( oleoDataProximaTroca !== undefined) dados.oleoDataProximaTroca = oleoDataProximaTroca
