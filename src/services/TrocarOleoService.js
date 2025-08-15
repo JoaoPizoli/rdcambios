@@ -111,6 +111,7 @@ async function updateTrocaOleo(dadosUpdate){
     return null;
      }
     const { id } = trocas
+    console.log('Olha o id ai '+ id)
     const dados = {}
     if( oleoDataTroca !== undefined) dados.oleoDataTroca = oleoDataTroca
     if( oleoDataProximaTroca !== undefined) dados.oleoDataProximaTroca = oleoDataProximaTroca
