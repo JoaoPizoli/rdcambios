@@ -62,10 +62,10 @@ async function listarTrocas(dados){
 
 
 async function deleteTrocaOleo(idTrocaOleo){
-    const trocaOleoId = idTrocaOleo
+    const { id } = idTrocaOleo
     const deleteTrocaOleo = await prisma.TrocaOleo.delete({
         where:{
-            id: trocaOleoId
+            id: id
         }
     })
     return deleteTrocaOleo

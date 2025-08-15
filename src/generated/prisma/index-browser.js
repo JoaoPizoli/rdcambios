@@ -119,6 +119,13 @@ exports.Prisma.AdminScalarFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.TokenBlacklistScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.ClienteScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
@@ -127,12 +134,21 @@ exports.Prisma.ClienteScalarFieldEnum = {
   adminId: 'adminId'
 };
 
+exports.Prisma.TrocaOleoScalarFieldEnum = {
+  id: 'id',
+  oleoDataTroca: 'oleoDataTroca',
+  oleoDataProximaTroca: 'oleoDataProximaTroca',
+  kmTroca: 'kmTroca',
+  KmProximaTroca: 'KmProximaTroca',
+  tipoOleo: 'tipoOleo',
+  carroId: 'carroId',
+  status: 'status'
+};
+
 exports.Prisma.CarroScalarFieldEnum = {
   id: 'id',
   placa: 'placa',
   modelo: 'modelo',
-  oleoDataTroca: 'oleoDataTroca',
-  oleoDataProximaTroca: 'oleoDataProximaTroca',
   clienteId: 'clienteId'
 };
 
@@ -149,7 +165,9 @@ exports.Prisma.QueryMode = {
 
 exports.Prisma.ModelName = {
   Admin: 'Admin',
+  TokenBlacklist: 'TokenBlacklist',
   Cliente: 'Cliente',
+  TrocaOleo: 'TrocaOleo',
   Carro: 'Carro'
 };
 

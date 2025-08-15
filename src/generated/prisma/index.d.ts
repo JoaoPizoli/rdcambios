@@ -19,10 +19,20 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type Admin = $Result.DefaultSelection<Prisma.$AdminPayload>
 /**
+ * Model TokenBlacklist
+ * 
+ */
+export type TokenBlacklist = $Result.DefaultSelection<Prisma.$TokenBlacklistPayload>
+/**
  * Model Cliente
  * 
  */
 export type Cliente = $Result.DefaultSelection<Prisma.$ClientePayload>
+/**
+ * Model TrocaOleo
+ * 
+ */
+export type TrocaOleo = $Result.DefaultSelection<Prisma.$TrocaOleoPayload>
 /**
  * Model Carro
  * 
@@ -132,6 +142,16 @@ export class PrismaClient<
   get admin(): Prisma.AdminDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.tokenBlacklist`: Exposes CRUD operations for the **TokenBlacklist** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TokenBlacklists
+    * const tokenBlacklists = await prisma.tokenBlacklist.findMany()
+    * ```
+    */
+  get tokenBlacklist(): Prisma.TokenBlacklistDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.cliente`: Exposes CRUD operations for the **Cliente** model.
     * Example usage:
     * ```ts
@@ -140,6 +160,16 @@ export class PrismaClient<
     * ```
     */
   get cliente(): Prisma.ClienteDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.trocaOleo`: Exposes CRUD operations for the **TrocaOleo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TrocaOleos
+    * const trocaOleos = await prisma.trocaOleo.findMany()
+    * ```
+    */
+  get trocaOleo(): Prisma.TrocaOleoDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.carro`: Exposes CRUD operations for the **Carro** model.
@@ -591,7 +621,9 @@ export namespace Prisma {
 
   export const ModelName: {
     Admin: 'Admin',
+    TokenBlacklist: 'TokenBlacklist',
     Cliente: 'Cliente',
+    TrocaOleo: 'TrocaOleo',
     Carro: 'Carro'
   };
 
@@ -611,7 +643,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "admin" | "cliente" | "carro"
+      modelProps: "admin" | "tokenBlacklist" | "cliente" | "trocaOleo" | "carro"
       txIsolationLevel: never
     }
     model: {
@@ -689,6 +721,80 @@ export namespace Prisma {
           }
         }
       }
+      TokenBlacklist: {
+        payload: Prisma.$TokenBlacklistPayload<ExtArgs>
+        fields: Prisma.TokenBlacklistFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TokenBlacklistFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TokenBlacklistFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          findFirst: {
+            args: Prisma.TokenBlacklistFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TokenBlacklistFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          findMany: {
+            args: Prisma.TokenBlacklistFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>[]
+          }
+          create: {
+            args: Prisma.TokenBlacklistCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          createMany: {
+            args: Prisma.TokenBlacklistCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.TokenBlacklistDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          update: {
+            args: Prisma.TokenBlacklistUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          deleteMany: {
+            args: Prisma.TokenBlacklistDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TokenBlacklistUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TokenBlacklistUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          aggregate: {
+            args: Prisma.TokenBlacklistAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTokenBlacklist>
+          }
+          groupBy: {
+            args: Prisma.TokenBlacklistGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TokenBlacklistGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.TokenBlacklistFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.TokenBlacklistAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.TokenBlacklistCountArgs<ExtArgs>
+            result: $Utils.Optional<TokenBlacklistCountAggregateOutputType> | number
+          }
+        }
+      }
       Cliente: {
         payload: Prisma.$ClientePayload<ExtArgs>
         fields: Prisma.ClienteFieldRefs
@@ -760,6 +866,80 @@ export namespace Prisma {
           count: {
             args: Prisma.ClienteCountArgs<ExtArgs>
             result: $Utils.Optional<ClienteCountAggregateOutputType> | number
+          }
+        }
+      }
+      TrocaOleo: {
+        payload: Prisma.$TrocaOleoPayload<ExtArgs>
+        fields: Prisma.TrocaOleoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrocaOleoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrocaOleoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrocaOleoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrocaOleoPayload>
+          }
+          findFirst: {
+            args: Prisma.TrocaOleoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrocaOleoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrocaOleoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrocaOleoPayload>
+          }
+          findMany: {
+            args: Prisma.TrocaOleoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrocaOleoPayload>[]
+          }
+          create: {
+            args: Prisma.TrocaOleoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrocaOleoPayload>
+          }
+          createMany: {
+            args: Prisma.TrocaOleoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.TrocaOleoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrocaOleoPayload>
+          }
+          update: {
+            args: Prisma.TrocaOleoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrocaOleoPayload>
+          }
+          deleteMany: {
+            args: Prisma.TrocaOleoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrocaOleoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TrocaOleoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrocaOleoPayload>
+          }
+          aggregate: {
+            args: Prisma.TrocaOleoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrocaOleo>
+          }
+          groupBy: {
+            args: Prisma.TrocaOleoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrocaOleoGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.TrocaOleoFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.TrocaOleoAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.TrocaOleoCountArgs<ExtArgs>
+            result: $Utils.Optional<TrocaOleoCountAggregateOutputType> | number
           }
         }
       }
@@ -909,7 +1089,9 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     admin?: AdminOmit
+    tokenBlacklist?: TokenBlacklistOmit
     cliente?: ClienteOmit
+    trocaOleo?: TrocaOleoOmit
     carro?: CarroOmit
   }
 
@@ -1059,6 +1241,37 @@ export namespace Prisma {
    */
   export type ClienteCountOutputTypeCountCarrosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CarroWhereInput
+  }
+
+
+  /**
+   * Count Type CarroCountOutputType
+   */
+
+  export type CarroCountOutputType = {
+    trocasOleo: number
+  }
+
+  export type CarroCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    trocasOleo?: boolean | CarroCountOutputTypeCountTrocasOleoArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CarroCountOutputType without action
+   */
+  export type CarroCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CarroCountOutputType
+     */
+    select?: CarroCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CarroCountOutputType without action
+   */
+  export type CarroCountOutputTypeCountTrocasOleoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrocaOleoWhereInput
   }
 
 
@@ -2046,6 +2259,927 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: AdminInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TokenBlacklist
+   */
+
+  export type AggregateTokenBlacklist = {
+    _count: TokenBlacklistCountAggregateOutputType | null
+    _min: TokenBlacklistMinAggregateOutputType | null
+    _max: TokenBlacklistMaxAggregateOutputType | null
+  }
+
+  export type TokenBlacklistMinAggregateOutputType = {
+    id: string | null
+    token: string | null
+    expiresAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type TokenBlacklistMaxAggregateOutputType = {
+    id: string | null
+    token: string | null
+    expiresAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type TokenBlacklistCountAggregateOutputType = {
+    id: number
+    token: number
+    expiresAt: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type TokenBlacklistMinAggregateInputType = {
+    id?: true
+    token?: true
+    expiresAt?: true
+    createdAt?: true
+  }
+
+  export type TokenBlacklistMaxAggregateInputType = {
+    id?: true
+    token?: true
+    expiresAt?: true
+    createdAt?: true
+  }
+
+  export type TokenBlacklistCountAggregateInputType = {
+    id?: true
+    token?: true
+    expiresAt?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type TokenBlacklistAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TokenBlacklist to aggregate.
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TokenBlacklists to fetch.
+     */
+    orderBy?: TokenBlacklistOrderByWithRelationInput | TokenBlacklistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TokenBlacklistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TokenBlacklists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TokenBlacklists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TokenBlacklists
+    **/
+    _count?: true | TokenBlacklistCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TokenBlacklistMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TokenBlacklistMaxAggregateInputType
+  }
+
+  export type GetTokenBlacklistAggregateType<T extends TokenBlacklistAggregateArgs> = {
+        [P in keyof T & keyof AggregateTokenBlacklist]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTokenBlacklist[P]>
+      : GetScalarType<T[P], AggregateTokenBlacklist[P]>
+  }
+
+
+
+
+  export type TokenBlacklistGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TokenBlacklistWhereInput
+    orderBy?: TokenBlacklistOrderByWithAggregationInput | TokenBlacklistOrderByWithAggregationInput[]
+    by: TokenBlacklistScalarFieldEnum[] | TokenBlacklistScalarFieldEnum
+    having?: TokenBlacklistScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TokenBlacklistCountAggregateInputType | true
+    _min?: TokenBlacklistMinAggregateInputType
+    _max?: TokenBlacklistMaxAggregateInputType
+  }
+
+  export type TokenBlacklistGroupByOutputType = {
+    id: string
+    token: string
+    expiresAt: Date
+    createdAt: Date
+    _count: TokenBlacklistCountAggregateOutputType | null
+    _min: TokenBlacklistMinAggregateOutputType | null
+    _max: TokenBlacklistMaxAggregateOutputType | null
+  }
+
+  type GetTokenBlacklistGroupByPayload<T extends TokenBlacklistGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TokenBlacklistGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TokenBlacklistGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TokenBlacklistGroupByOutputType[P]>
+            : GetScalarType<T[P], TokenBlacklistGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TokenBlacklistSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["tokenBlacklist"]>
+
+
+
+  export type TokenBlacklistSelectScalar = {
+    id?: boolean
+    token?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+  }
+
+  export type TokenBlacklistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token" | "expiresAt" | "createdAt", ExtArgs["result"]["tokenBlacklist"]>
+
+  export type $TokenBlacklistPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TokenBlacklist"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      token: string
+      expiresAt: Date
+      createdAt: Date
+    }, ExtArgs["result"]["tokenBlacklist"]>
+    composites: {}
+  }
+
+  type TokenBlacklistGetPayload<S extends boolean | null | undefined | TokenBlacklistDefaultArgs> = $Result.GetResult<Prisma.$TokenBlacklistPayload, S>
+
+  type TokenBlacklistCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TokenBlacklistFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TokenBlacklistCountAggregateInputType | true
+    }
+
+  export interface TokenBlacklistDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TokenBlacklist'], meta: { name: 'TokenBlacklist' } }
+    /**
+     * Find zero or one TokenBlacklist that matches the filter.
+     * @param {TokenBlacklistFindUniqueArgs} args - Arguments to find a TokenBlacklist
+     * @example
+     * // Get one TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TokenBlacklistFindUniqueArgs>(args: SelectSubset<T, TokenBlacklistFindUniqueArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TokenBlacklist that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TokenBlacklistFindUniqueOrThrowArgs} args - Arguments to find a TokenBlacklist
+     * @example
+     * // Get one TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TokenBlacklistFindUniqueOrThrowArgs>(args: SelectSubset<T, TokenBlacklistFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TokenBlacklist that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistFindFirstArgs} args - Arguments to find a TokenBlacklist
+     * @example
+     * // Get one TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TokenBlacklistFindFirstArgs>(args?: SelectSubset<T, TokenBlacklistFindFirstArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TokenBlacklist that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistFindFirstOrThrowArgs} args - Arguments to find a TokenBlacklist
+     * @example
+     * // Get one TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TokenBlacklistFindFirstOrThrowArgs>(args?: SelectSubset<T, TokenBlacklistFindFirstOrThrowArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TokenBlacklists that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TokenBlacklists
+     * const tokenBlacklists = await prisma.tokenBlacklist.findMany()
+     * 
+     * // Get first 10 TokenBlacklists
+     * const tokenBlacklists = await prisma.tokenBlacklist.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tokenBlacklistWithIdOnly = await prisma.tokenBlacklist.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TokenBlacklistFindManyArgs>(args?: SelectSubset<T, TokenBlacklistFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TokenBlacklist.
+     * @param {TokenBlacklistCreateArgs} args - Arguments to create a TokenBlacklist.
+     * @example
+     * // Create one TokenBlacklist
+     * const TokenBlacklist = await prisma.tokenBlacklist.create({
+     *   data: {
+     *     // ... data to create a TokenBlacklist
+     *   }
+     * })
+     * 
+     */
+    create<T extends TokenBlacklistCreateArgs>(args: SelectSubset<T, TokenBlacklistCreateArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TokenBlacklists.
+     * @param {TokenBlacklistCreateManyArgs} args - Arguments to create many TokenBlacklists.
+     * @example
+     * // Create many TokenBlacklists
+     * const tokenBlacklist = await prisma.tokenBlacklist.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TokenBlacklistCreateManyArgs>(args?: SelectSubset<T, TokenBlacklistCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a TokenBlacklist.
+     * @param {TokenBlacklistDeleteArgs} args - Arguments to delete one TokenBlacklist.
+     * @example
+     * // Delete one TokenBlacklist
+     * const TokenBlacklist = await prisma.tokenBlacklist.delete({
+     *   where: {
+     *     // ... filter to delete one TokenBlacklist
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TokenBlacklistDeleteArgs>(args: SelectSubset<T, TokenBlacklistDeleteArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TokenBlacklist.
+     * @param {TokenBlacklistUpdateArgs} args - Arguments to update one TokenBlacklist.
+     * @example
+     * // Update one TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TokenBlacklistUpdateArgs>(args: SelectSubset<T, TokenBlacklistUpdateArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TokenBlacklists.
+     * @param {TokenBlacklistDeleteManyArgs} args - Arguments to filter TokenBlacklists to delete.
+     * @example
+     * // Delete a few TokenBlacklists
+     * const { count } = await prisma.tokenBlacklist.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TokenBlacklistDeleteManyArgs>(args?: SelectSubset<T, TokenBlacklistDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TokenBlacklists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TokenBlacklists
+     * const tokenBlacklist = await prisma.tokenBlacklist.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TokenBlacklistUpdateManyArgs>(args: SelectSubset<T, TokenBlacklistUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TokenBlacklist.
+     * @param {TokenBlacklistUpsertArgs} args - Arguments to update or create a TokenBlacklist.
+     * @example
+     * // Update or create a TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.upsert({
+     *   create: {
+     *     // ... data to create a TokenBlacklist
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TokenBlacklist we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TokenBlacklistUpsertArgs>(args: SelectSubset<T, TokenBlacklistUpsertArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TokenBlacklists that matches the filter.
+     * @param {TokenBlacklistFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const tokenBlacklist = await prisma.tokenBlacklist.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: TokenBlacklistFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a TokenBlacklist.
+     * @param {TokenBlacklistAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const tokenBlacklist = await prisma.tokenBlacklist.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: TokenBlacklistAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of TokenBlacklists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistCountArgs} args - Arguments to filter TokenBlacklists to count.
+     * @example
+     * // Count the number of TokenBlacklists
+     * const count = await prisma.tokenBlacklist.count({
+     *   where: {
+     *     // ... the filter for the TokenBlacklists we want to count
+     *   }
+     * })
+    **/
+    count<T extends TokenBlacklistCountArgs>(
+      args?: Subset<T, TokenBlacklistCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TokenBlacklistCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TokenBlacklist.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TokenBlacklistAggregateArgs>(args: Subset<T, TokenBlacklistAggregateArgs>): Prisma.PrismaPromise<GetTokenBlacklistAggregateType<T>>
+
+    /**
+     * Group by TokenBlacklist.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TokenBlacklistGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TokenBlacklistGroupByArgs['orderBy'] }
+        : { orderBy?: TokenBlacklistGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TokenBlacklistGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTokenBlacklistGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TokenBlacklist model
+   */
+  readonly fields: TokenBlacklistFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TokenBlacklist.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TokenBlacklistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TokenBlacklist model
+   */
+  interface TokenBlacklistFieldRefs {
+    readonly id: FieldRef<"TokenBlacklist", 'String'>
+    readonly token: FieldRef<"TokenBlacklist", 'String'>
+    readonly expiresAt: FieldRef<"TokenBlacklist", 'DateTime'>
+    readonly createdAt: FieldRef<"TokenBlacklist", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TokenBlacklist findUnique
+   */
+  export type TokenBlacklistFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter, which TokenBlacklist to fetch.
+     */
+    where: TokenBlacklistWhereUniqueInput
+  }
+
+  /**
+   * TokenBlacklist findUniqueOrThrow
+   */
+  export type TokenBlacklistFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter, which TokenBlacklist to fetch.
+     */
+    where: TokenBlacklistWhereUniqueInput
+  }
+
+  /**
+   * TokenBlacklist findFirst
+   */
+  export type TokenBlacklistFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter, which TokenBlacklist to fetch.
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TokenBlacklists to fetch.
+     */
+    orderBy?: TokenBlacklistOrderByWithRelationInput | TokenBlacklistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TokenBlacklists.
+     */
+    cursor?: TokenBlacklistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TokenBlacklists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TokenBlacklists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TokenBlacklists.
+     */
+    distinct?: TokenBlacklistScalarFieldEnum | TokenBlacklistScalarFieldEnum[]
+  }
+
+  /**
+   * TokenBlacklist findFirstOrThrow
+   */
+  export type TokenBlacklistFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter, which TokenBlacklist to fetch.
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TokenBlacklists to fetch.
+     */
+    orderBy?: TokenBlacklistOrderByWithRelationInput | TokenBlacklistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TokenBlacklists.
+     */
+    cursor?: TokenBlacklistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TokenBlacklists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TokenBlacklists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TokenBlacklists.
+     */
+    distinct?: TokenBlacklistScalarFieldEnum | TokenBlacklistScalarFieldEnum[]
+  }
+
+  /**
+   * TokenBlacklist findMany
+   */
+  export type TokenBlacklistFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter, which TokenBlacklists to fetch.
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TokenBlacklists to fetch.
+     */
+    orderBy?: TokenBlacklistOrderByWithRelationInput | TokenBlacklistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TokenBlacklists.
+     */
+    cursor?: TokenBlacklistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TokenBlacklists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TokenBlacklists.
+     */
+    skip?: number
+    distinct?: TokenBlacklistScalarFieldEnum | TokenBlacklistScalarFieldEnum[]
+  }
+
+  /**
+   * TokenBlacklist create
+   */
+  export type TokenBlacklistCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * The data needed to create a TokenBlacklist.
+     */
+    data: XOR<TokenBlacklistCreateInput, TokenBlacklistUncheckedCreateInput>
+  }
+
+  /**
+   * TokenBlacklist createMany
+   */
+  export type TokenBlacklistCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TokenBlacklists.
+     */
+    data: TokenBlacklistCreateManyInput | TokenBlacklistCreateManyInput[]
+  }
+
+  /**
+   * TokenBlacklist update
+   */
+  export type TokenBlacklistUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * The data needed to update a TokenBlacklist.
+     */
+    data: XOR<TokenBlacklistUpdateInput, TokenBlacklistUncheckedUpdateInput>
+    /**
+     * Choose, which TokenBlacklist to update.
+     */
+    where: TokenBlacklistWhereUniqueInput
+  }
+
+  /**
+   * TokenBlacklist updateMany
+   */
+  export type TokenBlacklistUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TokenBlacklists.
+     */
+    data: XOR<TokenBlacklistUpdateManyMutationInput, TokenBlacklistUncheckedUpdateManyInput>
+    /**
+     * Filter which TokenBlacklists to update
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * Limit how many TokenBlacklists to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TokenBlacklist upsert
+   */
+  export type TokenBlacklistUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * The filter to search for the TokenBlacklist to update in case it exists.
+     */
+    where: TokenBlacklistWhereUniqueInput
+    /**
+     * In case the TokenBlacklist found by the `where` argument doesn't exist, create a new TokenBlacklist with this data.
+     */
+    create: XOR<TokenBlacklistCreateInput, TokenBlacklistUncheckedCreateInput>
+    /**
+     * In case the TokenBlacklist was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TokenBlacklistUpdateInput, TokenBlacklistUncheckedUpdateInput>
+  }
+
+  /**
+   * TokenBlacklist delete
+   */
+  export type TokenBlacklistDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter which TokenBlacklist to delete.
+     */
+    where: TokenBlacklistWhereUniqueInput
+  }
+
+  /**
+   * TokenBlacklist deleteMany
+   */
+  export type TokenBlacklistDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TokenBlacklists to delete
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * Limit how many TokenBlacklists to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TokenBlacklist findRaw
+   */
+  export type TokenBlacklistFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * TokenBlacklist aggregateRaw
+   */
+  export type TokenBlacklistAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * TokenBlacklist without action
+   */
+  export type TokenBlacklistDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
   }
 
 
@@ -3093,6 +4227,1056 @@ export namespace Prisma {
 
 
   /**
+   * Model TrocaOleo
+   */
+
+  export type AggregateTrocaOleo = {
+    _count: TrocaOleoCountAggregateOutputType | null
+    _avg: TrocaOleoAvgAggregateOutputType | null
+    _sum: TrocaOleoSumAggregateOutputType | null
+    _min: TrocaOleoMinAggregateOutputType | null
+    _max: TrocaOleoMaxAggregateOutputType | null
+  }
+
+  export type TrocaOleoAvgAggregateOutputType = {
+    kmTroca: number | null
+    KmProximaTroca: number | null
+  }
+
+  export type TrocaOleoSumAggregateOutputType = {
+    kmTroca: number | null
+    KmProximaTroca: number | null
+  }
+
+  export type TrocaOleoMinAggregateOutputType = {
+    id: string | null
+    oleoDataTroca: Date | null
+    oleoDataProximaTroca: Date | null
+    kmTroca: number | null
+    KmProximaTroca: number | null
+    tipoOleo: string | null
+    carroId: string | null
+    status: boolean | null
+  }
+
+  export type TrocaOleoMaxAggregateOutputType = {
+    id: string | null
+    oleoDataTroca: Date | null
+    oleoDataProximaTroca: Date | null
+    kmTroca: number | null
+    KmProximaTroca: number | null
+    tipoOleo: string | null
+    carroId: string | null
+    status: boolean | null
+  }
+
+  export type TrocaOleoCountAggregateOutputType = {
+    id: number
+    oleoDataTroca: number
+    oleoDataProximaTroca: number
+    kmTroca: number
+    KmProximaTroca: number
+    tipoOleo: number
+    carroId: number
+    status: number
+    _all: number
+  }
+
+
+  export type TrocaOleoAvgAggregateInputType = {
+    kmTroca?: true
+    KmProximaTroca?: true
+  }
+
+  export type TrocaOleoSumAggregateInputType = {
+    kmTroca?: true
+    KmProximaTroca?: true
+  }
+
+  export type TrocaOleoMinAggregateInputType = {
+    id?: true
+    oleoDataTroca?: true
+    oleoDataProximaTroca?: true
+    kmTroca?: true
+    KmProximaTroca?: true
+    tipoOleo?: true
+    carroId?: true
+    status?: true
+  }
+
+  export type TrocaOleoMaxAggregateInputType = {
+    id?: true
+    oleoDataTroca?: true
+    oleoDataProximaTroca?: true
+    kmTroca?: true
+    KmProximaTroca?: true
+    tipoOleo?: true
+    carroId?: true
+    status?: true
+  }
+
+  export type TrocaOleoCountAggregateInputType = {
+    id?: true
+    oleoDataTroca?: true
+    oleoDataProximaTroca?: true
+    kmTroca?: true
+    KmProximaTroca?: true
+    tipoOleo?: true
+    carroId?: true
+    status?: true
+    _all?: true
+  }
+
+  export type TrocaOleoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrocaOleo to aggregate.
+     */
+    where?: TrocaOleoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrocaOleos to fetch.
+     */
+    orderBy?: TrocaOleoOrderByWithRelationInput | TrocaOleoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrocaOleoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrocaOleos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrocaOleos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TrocaOleos
+    **/
+    _count?: true | TrocaOleoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TrocaOleoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TrocaOleoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrocaOleoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrocaOleoMaxAggregateInputType
+  }
+
+  export type GetTrocaOleoAggregateType<T extends TrocaOleoAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrocaOleo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrocaOleo[P]>
+      : GetScalarType<T[P], AggregateTrocaOleo[P]>
+  }
+
+
+
+
+  export type TrocaOleoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrocaOleoWhereInput
+    orderBy?: TrocaOleoOrderByWithAggregationInput | TrocaOleoOrderByWithAggregationInput[]
+    by: TrocaOleoScalarFieldEnum[] | TrocaOleoScalarFieldEnum
+    having?: TrocaOleoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrocaOleoCountAggregateInputType | true
+    _avg?: TrocaOleoAvgAggregateInputType
+    _sum?: TrocaOleoSumAggregateInputType
+    _min?: TrocaOleoMinAggregateInputType
+    _max?: TrocaOleoMaxAggregateInputType
+  }
+
+  export type TrocaOleoGroupByOutputType = {
+    id: string
+    oleoDataTroca: Date
+    oleoDataProximaTroca: Date
+    kmTroca: number
+    KmProximaTroca: number
+    tipoOleo: string
+    carroId: string
+    status: boolean
+    _count: TrocaOleoCountAggregateOutputType | null
+    _avg: TrocaOleoAvgAggregateOutputType | null
+    _sum: TrocaOleoSumAggregateOutputType | null
+    _min: TrocaOleoMinAggregateOutputType | null
+    _max: TrocaOleoMaxAggregateOutputType | null
+  }
+
+  type GetTrocaOleoGroupByPayload<T extends TrocaOleoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrocaOleoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrocaOleoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrocaOleoGroupByOutputType[P]>
+            : GetScalarType<T[P], TrocaOleoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrocaOleoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    oleoDataTroca?: boolean
+    oleoDataProximaTroca?: boolean
+    kmTroca?: boolean
+    KmProximaTroca?: boolean
+    tipoOleo?: boolean
+    carroId?: boolean
+    status?: boolean
+    carro?: boolean | CarroDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trocaOleo"]>
+
+
+
+  export type TrocaOleoSelectScalar = {
+    id?: boolean
+    oleoDataTroca?: boolean
+    oleoDataProximaTroca?: boolean
+    kmTroca?: boolean
+    KmProximaTroca?: boolean
+    tipoOleo?: boolean
+    carroId?: boolean
+    status?: boolean
+  }
+
+  export type TrocaOleoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "oleoDataTroca" | "oleoDataProximaTroca" | "kmTroca" | "KmProximaTroca" | "tipoOleo" | "carroId" | "status", ExtArgs["result"]["trocaOleo"]>
+  export type TrocaOleoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    carro?: boolean | CarroDefaultArgs<ExtArgs>
+  }
+
+  export type $TrocaOleoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TrocaOleo"
+    objects: {
+      carro: Prisma.$CarroPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      oleoDataTroca: Date
+      oleoDataProximaTroca: Date
+      kmTroca: number
+      KmProximaTroca: number
+      tipoOleo: string
+      carroId: string
+      status: boolean
+    }, ExtArgs["result"]["trocaOleo"]>
+    composites: {}
+  }
+
+  type TrocaOleoGetPayload<S extends boolean | null | undefined | TrocaOleoDefaultArgs> = $Result.GetResult<Prisma.$TrocaOleoPayload, S>
+
+  type TrocaOleoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrocaOleoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrocaOleoCountAggregateInputType | true
+    }
+
+  export interface TrocaOleoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TrocaOleo'], meta: { name: 'TrocaOleo' } }
+    /**
+     * Find zero or one TrocaOleo that matches the filter.
+     * @param {TrocaOleoFindUniqueArgs} args - Arguments to find a TrocaOleo
+     * @example
+     * // Get one TrocaOleo
+     * const trocaOleo = await prisma.trocaOleo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrocaOleoFindUniqueArgs>(args: SelectSubset<T, TrocaOleoFindUniqueArgs<ExtArgs>>): Prisma__TrocaOleoClient<$Result.GetResult<Prisma.$TrocaOleoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TrocaOleo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrocaOleoFindUniqueOrThrowArgs} args - Arguments to find a TrocaOleo
+     * @example
+     * // Get one TrocaOleo
+     * const trocaOleo = await prisma.trocaOleo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrocaOleoFindUniqueOrThrowArgs>(args: SelectSubset<T, TrocaOleoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrocaOleoClient<$Result.GetResult<Prisma.$TrocaOleoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrocaOleo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrocaOleoFindFirstArgs} args - Arguments to find a TrocaOleo
+     * @example
+     * // Get one TrocaOleo
+     * const trocaOleo = await prisma.trocaOleo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrocaOleoFindFirstArgs>(args?: SelectSubset<T, TrocaOleoFindFirstArgs<ExtArgs>>): Prisma__TrocaOleoClient<$Result.GetResult<Prisma.$TrocaOleoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrocaOleo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrocaOleoFindFirstOrThrowArgs} args - Arguments to find a TrocaOleo
+     * @example
+     * // Get one TrocaOleo
+     * const trocaOleo = await prisma.trocaOleo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrocaOleoFindFirstOrThrowArgs>(args?: SelectSubset<T, TrocaOleoFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrocaOleoClient<$Result.GetResult<Prisma.$TrocaOleoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TrocaOleos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrocaOleoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TrocaOleos
+     * const trocaOleos = await prisma.trocaOleo.findMany()
+     * 
+     * // Get first 10 TrocaOleos
+     * const trocaOleos = await prisma.trocaOleo.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const trocaOleoWithIdOnly = await prisma.trocaOleo.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TrocaOleoFindManyArgs>(args?: SelectSubset<T, TrocaOleoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrocaOleoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TrocaOleo.
+     * @param {TrocaOleoCreateArgs} args - Arguments to create a TrocaOleo.
+     * @example
+     * // Create one TrocaOleo
+     * const TrocaOleo = await prisma.trocaOleo.create({
+     *   data: {
+     *     // ... data to create a TrocaOleo
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrocaOleoCreateArgs>(args: SelectSubset<T, TrocaOleoCreateArgs<ExtArgs>>): Prisma__TrocaOleoClient<$Result.GetResult<Prisma.$TrocaOleoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TrocaOleos.
+     * @param {TrocaOleoCreateManyArgs} args - Arguments to create many TrocaOleos.
+     * @example
+     * // Create many TrocaOleos
+     * const trocaOleo = await prisma.trocaOleo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrocaOleoCreateManyArgs>(args?: SelectSubset<T, TrocaOleoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a TrocaOleo.
+     * @param {TrocaOleoDeleteArgs} args - Arguments to delete one TrocaOleo.
+     * @example
+     * // Delete one TrocaOleo
+     * const TrocaOleo = await prisma.trocaOleo.delete({
+     *   where: {
+     *     // ... filter to delete one TrocaOleo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrocaOleoDeleteArgs>(args: SelectSubset<T, TrocaOleoDeleteArgs<ExtArgs>>): Prisma__TrocaOleoClient<$Result.GetResult<Prisma.$TrocaOleoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TrocaOleo.
+     * @param {TrocaOleoUpdateArgs} args - Arguments to update one TrocaOleo.
+     * @example
+     * // Update one TrocaOleo
+     * const trocaOleo = await prisma.trocaOleo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrocaOleoUpdateArgs>(args: SelectSubset<T, TrocaOleoUpdateArgs<ExtArgs>>): Prisma__TrocaOleoClient<$Result.GetResult<Prisma.$TrocaOleoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TrocaOleos.
+     * @param {TrocaOleoDeleteManyArgs} args - Arguments to filter TrocaOleos to delete.
+     * @example
+     * // Delete a few TrocaOleos
+     * const { count } = await prisma.trocaOleo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrocaOleoDeleteManyArgs>(args?: SelectSubset<T, TrocaOleoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrocaOleos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrocaOleoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TrocaOleos
+     * const trocaOleo = await prisma.trocaOleo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrocaOleoUpdateManyArgs>(args: SelectSubset<T, TrocaOleoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TrocaOleo.
+     * @param {TrocaOleoUpsertArgs} args - Arguments to update or create a TrocaOleo.
+     * @example
+     * // Update or create a TrocaOleo
+     * const trocaOleo = await prisma.trocaOleo.upsert({
+     *   create: {
+     *     // ... data to create a TrocaOleo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TrocaOleo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrocaOleoUpsertArgs>(args: SelectSubset<T, TrocaOleoUpsertArgs<ExtArgs>>): Prisma__TrocaOleoClient<$Result.GetResult<Prisma.$TrocaOleoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TrocaOleos that matches the filter.
+     * @param {TrocaOleoFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const trocaOleo = await prisma.trocaOleo.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: TrocaOleoFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a TrocaOleo.
+     * @param {TrocaOleoAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const trocaOleo = await prisma.trocaOleo.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: TrocaOleoAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of TrocaOleos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrocaOleoCountArgs} args - Arguments to filter TrocaOleos to count.
+     * @example
+     * // Count the number of TrocaOleos
+     * const count = await prisma.trocaOleo.count({
+     *   where: {
+     *     // ... the filter for the TrocaOleos we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrocaOleoCountArgs>(
+      args?: Subset<T, TrocaOleoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrocaOleoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TrocaOleo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrocaOleoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrocaOleoAggregateArgs>(args: Subset<T, TrocaOleoAggregateArgs>): Prisma.PrismaPromise<GetTrocaOleoAggregateType<T>>
+
+    /**
+     * Group by TrocaOleo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrocaOleoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrocaOleoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrocaOleoGroupByArgs['orderBy'] }
+        : { orderBy?: TrocaOleoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrocaOleoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrocaOleoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TrocaOleo model
+   */
+  readonly fields: TrocaOleoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TrocaOleo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrocaOleoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    carro<T extends CarroDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CarroDefaultArgs<ExtArgs>>): Prisma__CarroClient<$Result.GetResult<Prisma.$CarroPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TrocaOleo model
+   */
+  interface TrocaOleoFieldRefs {
+    readonly id: FieldRef<"TrocaOleo", 'String'>
+    readonly oleoDataTroca: FieldRef<"TrocaOleo", 'DateTime'>
+    readonly oleoDataProximaTroca: FieldRef<"TrocaOleo", 'DateTime'>
+    readonly kmTroca: FieldRef<"TrocaOleo", 'Int'>
+    readonly KmProximaTroca: FieldRef<"TrocaOleo", 'Int'>
+    readonly tipoOleo: FieldRef<"TrocaOleo", 'String'>
+    readonly carroId: FieldRef<"TrocaOleo", 'String'>
+    readonly status: FieldRef<"TrocaOleo", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TrocaOleo findUnique
+   */
+  export type TrocaOleoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrocaOleo
+     */
+    select?: TrocaOleoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrocaOleo
+     */
+    omit?: TrocaOleoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrocaOleoInclude<ExtArgs> | null
+    /**
+     * Filter, which TrocaOleo to fetch.
+     */
+    where: TrocaOleoWhereUniqueInput
+  }
+
+  /**
+   * TrocaOleo findUniqueOrThrow
+   */
+  export type TrocaOleoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrocaOleo
+     */
+    select?: TrocaOleoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrocaOleo
+     */
+    omit?: TrocaOleoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrocaOleoInclude<ExtArgs> | null
+    /**
+     * Filter, which TrocaOleo to fetch.
+     */
+    where: TrocaOleoWhereUniqueInput
+  }
+
+  /**
+   * TrocaOleo findFirst
+   */
+  export type TrocaOleoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrocaOleo
+     */
+    select?: TrocaOleoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrocaOleo
+     */
+    omit?: TrocaOleoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrocaOleoInclude<ExtArgs> | null
+    /**
+     * Filter, which TrocaOleo to fetch.
+     */
+    where?: TrocaOleoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrocaOleos to fetch.
+     */
+    orderBy?: TrocaOleoOrderByWithRelationInput | TrocaOleoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrocaOleos.
+     */
+    cursor?: TrocaOleoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrocaOleos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrocaOleos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrocaOleos.
+     */
+    distinct?: TrocaOleoScalarFieldEnum | TrocaOleoScalarFieldEnum[]
+  }
+
+  /**
+   * TrocaOleo findFirstOrThrow
+   */
+  export type TrocaOleoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrocaOleo
+     */
+    select?: TrocaOleoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrocaOleo
+     */
+    omit?: TrocaOleoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrocaOleoInclude<ExtArgs> | null
+    /**
+     * Filter, which TrocaOleo to fetch.
+     */
+    where?: TrocaOleoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrocaOleos to fetch.
+     */
+    orderBy?: TrocaOleoOrderByWithRelationInput | TrocaOleoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrocaOleos.
+     */
+    cursor?: TrocaOleoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrocaOleos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrocaOleos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrocaOleos.
+     */
+    distinct?: TrocaOleoScalarFieldEnum | TrocaOleoScalarFieldEnum[]
+  }
+
+  /**
+   * TrocaOleo findMany
+   */
+  export type TrocaOleoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrocaOleo
+     */
+    select?: TrocaOleoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrocaOleo
+     */
+    omit?: TrocaOleoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrocaOleoInclude<ExtArgs> | null
+    /**
+     * Filter, which TrocaOleos to fetch.
+     */
+    where?: TrocaOleoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrocaOleos to fetch.
+     */
+    orderBy?: TrocaOleoOrderByWithRelationInput | TrocaOleoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TrocaOleos.
+     */
+    cursor?: TrocaOleoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrocaOleos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrocaOleos.
+     */
+    skip?: number
+    distinct?: TrocaOleoScalarFieldEnum | TrocaOleoScalarFieldEnum[]
+  }
+
+  /**
+   * TrocaOleo create
+   */
+  export type TrocaOleoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrocaOleo
+     */
+    select?: TrocaOleoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrocaOleo
+     */
+    omit?: TrocaOleoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrocaOleoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TrocaOleo.
+     */
+    data: XOR<TrocaOleoCreateInput, TrocaOleoUncheckedCreateInput>
+  }
+
+  /**
+   * TrocaOleo createMany
+   */
+  export type TrocaOleoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TrocaOleos.
+     */
+    data: TrocaOleoCreateManyInput | TrocaOleoCreateManyInput[]
+  }
+
+  /**
+   * TrocaOleo update
+   */
+  export type TrocaOleoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrocaOleo
+     */
+    select?: TrocaOleoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrocaOleo
+     */
+    omit?: TrocaOleoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrocaOleoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TrocaOleo.
+     */
+    data: XOR<TrocaOleoUpdateInput, TrocaOleoUncheckedUpdateInput>
+    /**
+     * Choose, which TrocaOleo to update.
+     */
+    where: TrocaOleoWhereUniqueInput
+  }
+
+  /**
+   * TrocaOleo updateMany
+   */
+  export type TrocaOleoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TrocaOleos.
+     */
+    data: XOR<TrocaOleoUpdateManyMutationInput, TrocaOleoUncheckedUpdateManyInput>
+    /**
+     * Filter which TrocaOleos to update
+     */
+    where?: TrocaOleoWhereInput
+    /**
+     * Limit how many TrocaOleos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrocaOleo upsert
+   */
+  export type TrocaOleoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrocaOleo
+     */
+    select?: TrocaOleoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrocaOleo
+     */
+    omit?: TrocaOleoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrocaOleoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TrocaOleo to update in case it exists.
+     */
+    where: TrocaOleoWhereUniqueInput
+    /**
+     * In case the TrocaOleo found by the `where` argument doesn't exist, create a new TrocaOleo with this data.
+     */
+    create: XOR<TrocaOleoCreateInput, TrocaOleoUncheckedCreateInput>
+    /**
+     * In case the TrocaOleo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrocaOleoUpdateInput, TrocaOleoUncheckedUpdateInput>
+  }
+
+  /**
+   * TrocaOleo delete
+   */
+  export type TrocaOleoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrocaOleo
+     */
+    select?: TrocaOleoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrocaOleo
+     */
+    omit?: TrocaOleoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrocaOleoInclude<ExtArgs> | null
+    /**
+     * Filter which TrocaOleo to delete.
+     */
+    where: TrocaOleoWhereUniqueInput
+  }
+
+  /**
+   * TrocaOleo deleteMany
+   */
+  export type TrocaOleoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrocaOleos to delete
+     */
+    where?: TrocaOleoWhereInput
+    /**
+     * Limit how many TrocaOleos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrocaOleo findRaw
+   */
+  export type TrocaOleoFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * TrocaOleo aggregateRaw
+   */
+  export type TrocaOleoAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * TrocaOleo without action
+   */
+  export type TrocaOleoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrocaOleo
+     */
+    select?: TrocaOleoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrocaOleo
+     */
+    omit?: TrocaOleoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrocaOleoInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Carro
    */
 
@@ -3106,8 +5290,6 @@ export namespace Prisma {
     id: string | null
     placa: string | null
     modelo: string | null
-    oleoDataTroca: Date | null
-    oleoDataProximaTroca: Date | null
     clienteId: string | null
   }
 
@@ -3115,8 +5297,6 @@ export namespace Prisma {
     id: string | null
     placa: string | null
     modelo: string | null
-    oleoDataTroca: Date | null
-    oleoDataProximaTroca: Date | null
     clienteId: string | null
   }
 
@@ -3124,8 +5304,6 @@ export namespace Prisma {
     id: number
     placa: number
     modelo: number
-    oleoDataTroca: number
-    oleoDataProximaTroca: number
     clienteId: number
     _all: number
   }
@@ -3135,8 +5313,6 @@ export namespace Prisma {
     id?: true
     placa?: true
     modelo?: true
-    oleoDataTroca?: true
-    oleoDataProximaTroca?: true
     clienteId?: true
   }
 
@@ -3144,8 +5320,6 @@ export namespace Prisma {
     id?: true
     placa?: true
     modelo?: true
-    oleoDataTroca?: true
-    oleoDataProximaTroca?: true
     clienteId?: true
   }
 
@@ -3153,8 +5327,6 @@ export namespace Prisma {
     id?: true
     placa?: true
     modelo?: true
-    oleoDataTroca?: true
-    oleoDataProximaTroca?: true
     clienteId?: true
     _all?: true
   }
@@ -3235,8 +5407,6 @@ export namespace Prisma {
     id: string
     placa: string
     modelo: string
-    oleoDataTroca: Date
-    oleoDataProximaTroca: Date
     clienteId: string
     _count: CarroCountAggregateOutputType | null
     _min: CarroMinAggregateOutputType | null
@@ -3261,10 +5431,10 @@ export namespace Prisma {
     id?: boolean
     placa?: boolean
     modelo?: boolean
-    oleoDataTroca?: boolean
-    oleoDataProximaTroca?: boolean
     clienteId?: boolean
     cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    trocasOleo?: boolean | Carro$trocasOleoArgs<ExtArgs>
+    _count?: boolean | CarroCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["carro"]>
 
 
@@ -3273,27 +5443,26 @@ export namespace Prisma {
     id?: boolean
     placa?: boolean
     modelo?: boolean
-    oleoDataTroca?: boolean
-    oleoDataProximaTroca?: boolean
     clienteId?: boolean
   }
 
-  export type CarroOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "placa" | "modelo" | "oleoDataTroca" | "oleoDataProximaTroca" | "clienteId", ExtArgs["result"]["carro"]>
+  export type CarroOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "placa" | "modelo" | "clienteId", ExtArgs["result"]["carro"]>
   export type CarroInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    trocasOleo?: boolean | Carro$trocasOleoArgs<ExtArgs>
+    _count?: boolean | CarroCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $CarroPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Carro"
     objects: {
       cliente: Prisma.$ClientePayload<ExtArgs>
+      trocasOleo: Prisma.$TrocaOleoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       placa: string
       modelo: string
-      oleoDataTroca: Date
-      oleoDataProximaTroca: Date
       clienteId: string
     }, ExtArgs["result"]["carro"]>
     composites: {}
@@ -3659,6 +5828,7 @@ export namespace Prisma {
   export interface Prisma__CarroClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     cliente<T extends ClienteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClienteDefaultArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    trocasOleo<T extends Carro$trocasOleoArgs<ExtArgs> = {}>(args?: Subset<T, Carro$trocasOleoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrocaOleoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3691,8 +5861,6 @@ export namespace Prisma {
     readonly id: FieldRef<"Carro", 'String'>
     readonly placa: FieldRef<"Carro", 'String'>
     readonly modelo: FieldRef<"Carro", 'String'>
-    readonly oleoDataTroca: FieldRef<"Carro", 'DateTime'>
-    readonly oleoDataProximaTroca: FieldRef<"Carro", 'DateTime'>
     readonly clienteId: FieldRef<"Carro", 'String'>
   }
     
@@ -4064,6 +6232,30 @@ export namespace Prisma {
   }
 
   /**
+   * Carro.trocasOleo
+   */
+  export type Carro$trocasOleoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrocaOleo
+     */
+    select?: TrocaOleoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrocaOleo
+     */
+    omit?: TrocaOleoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrocaOleoInclude<ExtArgs> | null
+    where?: TrocaOleoWhereInput
+    orderBy?: TrocaOleoOrderByWithRelationInput | TrocaOleoOrderByWithRelationInput[]
+    cursor?: TrocaOleoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TrocaOleoScalarFieldEnum | TrocaOleoScalarFieldEnum[]
+  }
+
+  /**
    * Carro without action
    */
   export type CarroDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4095,6 +6287,16 @@ export namespace Prisma {
   export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
 
 
+  export const TokenBlacklistScalarFieldEnum: {
+    id: 'id',
+    token: 'token',
+    expiresAt: 'expiresAt',
+    createdAt: 'createdAt'
+  };
+
+  export type TokenBlacklistScalarFieldEnum = (typeof TokenBlacklistScalarFieldEnum)[keyof typeof TokenBlacklistScalarFieldEnum]
+
+
   export const ClienteScalarFieldEnum: {
     id: 'id',
     nome: 'nome',
@@ -4106,12 +6308,24 @@ export namespace Prisma {
   export type ClienteScalarFieldEnum = (typeof ClienteScalarFieldEnum)[keyof typeof ClienteScalarFieldEnum]
 
 
+  export const TrocaOleoScalarFieldEnum: {
+    id: 'id',
+    oleoDataTroca: 'oleoDataTroca',
+    oleoDataProximaTroca: 'oleoDataProximaTroca',
+    kmTroca: 'kmTroca',
+    KmProximaTroca: 'KmProximaTroca',
+    tipoOleo: 'tipoOleo',
+    carroId: 'carroId',
+    status: 'status'
+  };
+
+  export type TrocaOleoScalarFieldEnum = (typeof TrocaOleoScalarFieldEnum)[keyof typeof TrocaOleoScalarFieldEnum]
+
+
   export const CarroScalarFieldEnum: {
     id: 'id',
     placa: 'placa',
     modelo: 'modelo',
-    oleoDataTroca: 'oleoDataTroca',
-    oleoDataProximaTroca: 'oleoDataProximaTroca',
     clienteId: 'clienteId'
   };
 
@@ -4154,6 +6368,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -4168,16 +6396,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
+   * Reference to a field of type 'Boolean'
    */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -4243,6 +6464,53 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter<"Admin"> | string
   }
 
+  export type TokenBlacklistWhereInput = {
+    AND?: TokenBlacklistWhereInput | TokenBlacklistWhereInput[]
+    OR?: TokenBlacklistWhereInput[]
+    NOT?: TokenBlacklistWhereInput | TokenBlacklistWhereInput[]
+    id?: StringFilter<"TokenBlacklist"> | string
+    token?: StringFilter<"TokenBlacklist"> | string
+    expiresAt?: DateTimeFilter<"TokenBlacklist"> | Date | string
+    createdAt?: DateTimeFilter<"TokenBlacklist"> | Date | string
+  }
+
+  export type TokenBlacklistOrderByWithRelationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TokenBlacklistWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    token?: string
+    AND?: TokenBlacklistWhereInput | TokenBlacklistWhereInput[]
+    OR?: TokenBlacklistWhereInput[]
+    NOT?: TokenBlacklistWhereInput | TokenBlacklistWhereInput[]
+    expiresAt?: DateTimeFilter<"TokenBlacklist"> | Date | string
+    createdAt?: DateTimeFilter<"TokenBlacklist"> | Date | string
+  }, "id" | "token">
+
+  export type TokenBlacklistOrderByWithAggregationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    _count?: TokenBlacklistCountOrderByAggregateInput
+    _max?: TokenBlacklistMaxOrderByAggregateInput
+    _min?: TokenBlacklistMinOrderByAggregateInput
+  }
+
+  export type TokenBlacklistScalarWhereWithAggregatesInput = {
+    AND?: TokenBlacklistScalarWhereWithAggregatesInput | TokenBlacklistScalarWhereWithAggregatesInput[]
+    OR?: TokenBlacklistScalarWhereWithAggregatesInput[]
+    NOT?: TokenBlacklistScalarWhereWithAggregatesInput | TokenBlacklistScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TokenBlacklist"> | string
+    token?: StringWithAggregatesFilter<"TokenBlacklist"> | string
+    expiresAt?: DateTimeWithAggregatesFilter<"TokenBlacklist"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"TokenBlacklist"> | Date | string
+  }
+
   export type ClienteWhereInput = {
     AND?: ClienteWhereInput | ClienteWhereInput[]
     OR?: ClienteWhereInput[]
@@ -4303,6 +6571,78 @@ export namespace Prisma {
     adminId?: StringWithAggregatesFilter<"Cliente"> | string
   }
 
+  export type TrocaOleoWhereInput = {
+    AND?: TrocaOleoWhereInput | TrocaOleoWhereInput[]
+    OR?: TrocaOleoWhereInput[]
+    NOT?: TrocaOleoWhereInput | TrocaOleoWhereInput[]
+    id?: StringFilter<"TrocaOleo"> | string
+    oleoDataTroca?: DateTimeFilter<"TrocaOleo"> | Date | string
+    oleoDataProximaTroca?: DateTimeFilter<"TrocaOleo"> | Date | string
+    kmTroca?: IntFilter<"TrocaOleo"> | number
+    KmProximaTroca?: IntFilter<"TrocaOleo"> | number
+    tipoOleo?: StringFilter<"TrocaOleo"> | string
+    carroId?: StringFilter<"TrocaOleo"> | string
+    status?: BoolFilter<"TrocaOleo"> | boolean
+    carro?: XOR<CarroScalarRelationFilter, CarroWhereInput>
+  }
+
+  export type TrocaOleoOrderByWithRelationInput = {
+    id?: SortOrder
+    oleoDataTroca?: SortOrder
+    oleoDataProximaTroca?: SortOrder
+    kmTroca?: SortOrder
+    KmProximaTroca?: SortOrder
+    tipoOleo?: SortOrder
+    carroId?: SortOrder
+    status?: SortOrder
+    carro?: CarroOrderByWithRelationInput
+  }
+
+  export type TrocaOleoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TrocaOleoWhereInput | TrocaOleoWhereInput[]
+    OR?: TrocaOleoWhereInput[]
+    NOT?: TrocaOleoWhereInput | TrocaOleoWhereInput[]
+    oleoDataTroca?: DateTimeFilter<"TrocaOleo"> | Date | string
+    oleoDataProximaTroca?: DateTimeFilter<"TrocaOleo"> | Date | string
+    kmTroca?: IntFilter<"TrocaOleo"> | number
+    KmProximaTroca?: IntFilter<"TrocaOleo"> | number
+    tipoOleo?: StringFilter<"TrocaOleo"> | string
+    carroId?: StringFilter<"TrocaOleo"> | string
+    status?: BoolFilter<"TrocaOleo"> | boolean
+    carro?: XOR<CarroScalarRelationFilter, CarroWhereInput>
+  }, "id">
+
+  export type TrocaOleoOrderByWithAggregationInput = {
+    id?: SortOrder
+    oleoDataTroca?: SortOrder
+    oleoDataProximaTroca?: SortOrder
+    kmTroca?: SortOrder
+    KmProximaTroca?: SortOrder
+    tipoOleo?: SortOrder
+    carroId?: SortOrder
+    status?: SortOrder
+    _count?: TrocaOleoCountOrderByAggregateInput
+    _avg?: TrocaOleoAvgOrderByAggregateInput
+    _max?: TrocaOleoMaxOrderByAggregateInput
+    _min?: TrocaOleoMinOrderByAggregateInput
+    _sum?: TrocaOleoSumOrderByAggregateInput
+  }
+
+  export type TrocaOleoScalarWhereWithAggregatesInput = {
+    AND?: TrocaOleoScalarWhereWithAggregatesInput | TrocaOleoScalarWhereWithAggregatesInput[]
+    OR?: TrocaOleoScalarWhereWithAggregatesInput[]
+    NOT?: TrocaOleoScalarWhereWithAggregatesInput | TrocaOleoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TrocaOleo"> | string
+    oleoDataTroca?: DateTimeWithAggregatesFilter<"TrocaOleo"> | Date | string
+    oleoDataProximaTroca?: DateTimeWithAggregatesFilter<"TrocaOleo"> | Date | string
+    kmTroca?: IntWithAggregatesFilter<"TrocaOleo"> | number
+    KmProximaTroca?: IntWithAggregatesFilter<"TrocaOleo"> | number
+    tipoOleo?: StringWithAggregatesFilter<"TrocaOleo"> | string
+    carroId?: StringWithAggregatesFilter<"TrocaOleo"> | string
+    status?: BoolWithAggregatesFilter<"TrocaOleo"> | boolean
+  }
+
   export type CarroWhereInput = {
     AND?: CarroWhereInput | CarroWhereInput[]
     OR?: CarroWhereInput[]
@@ -4310,20 +6650,18 @@ export namespace Prisma {
     id?: StringFilter<"Carro"> | string
     placa?: StringFilter<"Carro"> | string
     modelo?: StringFilter<"Carro"> | string
-    oleoDataTroca?: DateTimeFilter<"Carro"> | Date | string
-    oleoDataProximaTroca?: DateTimeFilter<"Carro"> | Date | string
     clienteId?: StringFilter<"Carro"> | string
     cliente?: XOR<ClienteScalarRelationFilter, ClienteWhereInput>
+    trocasOleo?: TrocaOleoListRelationFilter
   }
 
   export type CarroOrderByWithRelationInput = {
     id?: SortOrder
     placa?: SortOrder
     modelo?: SortOrder
-    oleoDataTroca?: SortOrder
-    oleoDataProximaTroca?: SortOrder
     clienteId?: SortOrder
     cliente?: ClienteOrderByWithRelationInput
+    trocasOleo?: TrocaOleoOrderByRelationAggregateInput
   }
 
   export type CarroWhereUniqueInput = Prisma.AtLeast<{
@@ -4333,18 +6671,15 @@ export namespace Prisma {
     OR?: CarroWhereInput[]
     NOT?: CarroWhereInput | CarroWhereInput[]
     modelo?: StringFilter<"Carro"> | string
-    oleoDataTroca?: DateTimeFilter<"Carro"> | Date | string
-    oleoDataProximaTroca?: DateTimeFilter<"Carro"> | Date | string
     clienteId?: StringFilter<"Carro"> | string
     cliente?: XOR<ClienteScalarRelationFilter, ClienteWhereInput>
+    trocasOleo?: TrocaOleoListRelationFilter
   }, "id" | "placa">
 
   export type CarroOrderByWithAggregationInput = {
     id?: SortOrder
     placa?: SortOrder
     modelo?: SortOrder
-    oleoDataTroca?: SortOrder
-    oleoDataProximaTroca?: SortOrder
     clienteId?: SortOrder
     _count?: CarroCountOrderByAggregateInput
     _max?: CarroMaxOrderByAggregateInput
@@ -4358,8 +6693,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Carro"> | string
     placa?: StringWithAggregatesFilter<"Carro"> | string
     modelo?: StringWithAggregatesFilter<"Carro"> | string
-    oleoDataTroca?: DateTimeWithAggregatesFilter<"Carro"> | Date | string
-    oleoDataProximaTroca?: DateTimeWithAggregatesFilter<"Carro"> | Date | string
     clienteId?: StringWithAggregatesFilter<"Carro"> | string
   }
 
@@ -4403,6 +6736,51 @@ export namespace Prisma {
   export type AdminUncheckedUpdateManyInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TokenBlacklistCreateInput = {
+    id?: string
+    token: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type TokenBlacklistUncheckedCreateInput = {
+    id?: string
+    token: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type TokenBlacklistUpdateInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TokenBlacklistUncheckedUpdateInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TokenBlacklistCreateManyInput = {
+    id?: string
+    token: string
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type TokenBlacklistUpdateManyMutationInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TokenBlacklistUncheckedUpdateManyInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ClienteCreateInput = {
@@ -4460,61 +6838,123 @@ export namespace Prisma {
     adminId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type TrocaOleoCreateInput = {
+    id?: string
+    oleoDataTroca: Date | string
+    oleoDataProximaTroca: Date | string
+    kmTroca: number
+    KmProximaTroca: number
+    tipoOleo: string
+    status: boolean
+    carro: CarroCreateNestedOneWithoutTrocasOleoInput
+  }
+
+  export type TrocaOleoUncheckedCreateInput = {
+    id?: string
+    oleoDataTroca: Date | string
+    oleoDataProximaTroca: Date | string
+    kmTroca: number
+    KmProximaTroca: number
+    tipoOleo: string
+    carroId: string
+    status: boolean
+  }
+
+  export type TrocaOleoUpdateInput = {
+    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    kmTroca?: IntFieldUpdateOperationsInput | number
+    KmProximaTroca?: IntFieldUpdateOperationsInput | number
+    tipoOleo?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+    carro?: CarroUpdateOneRequiredWithoutTrocasOleoNestedInput
+  }
+
+  export type TrocaOleoUncheckedUpdateInput = {
+    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    kmTroca?: IntFieldUpdateOperationsInput | number
+    KmProximaTroca?: IntFieldUpdateOperationsInput | number
+    tipoOleo?: StringFieldUpdateOperationsInput | string
+    carroId?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type TrocaOleoCreateManyInput = {
+    id?: string
+    oleoDataTroca: Date | string
+    oleoDataProximaTroca: Date | string
+    kmTroca: number
+    KmProximaTroca: number
+    tipoOleo: string
+    carroId: string
+    status: boolean
+  }
+
+  export type TrocaOleoUpdateManyMutationInput = {
+    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    kmTroca?: IntFieldUpdateOperationsInput | number
+    KmProximaTroca?: IntFieldUpdateOperationsInput | number
+    tipoOleo?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type TrocaOleoUncheckedUpdateManyInput = {
+    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    kmTroca?: IntFieldUpdateOperationsInput | number
+    KmProximaTroca?: IntFieldUpdateOperationsInput | number
+    tipoOleo?: StringFieldUpdateOperationsInput | string
+    carroId?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+  }
+
   export type CarroCreateInput = {
     id?: string
     placa: string
     modelo: string
-    oleoDataTroca: Date | string
-    oleoDataProximaTroca: Date | string
     cliente: ClienteCreateNestedOneWithoutCarrosInput
+    trocasOleo?: TrocaOleoCreateNestedManyWithoutCarroInput
   }
 
   export type CarroUncheckedCreateInput = {
     id?: string
     placa: string
     modelo: string
-    oleoDataTroca: Date | string
-    oleoDataProximaTroca: Date | string
     clienteId: string
+    trocasOleo?: TrocaOleoUncheckedCreateNestedManyWithoutCarroInput
   }
 
   export type CarroUpdateInput = {
     placa?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
-    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
     cliente?: ClienteUpdateOneRequiredWithoutCarrosNestedInput
+    trocasOleo?: TrocaOleoUpdateManyWithoutCarroNestedInput
   }
 
   export type CarroUncheckedUpdateInput = {
     placa?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
-    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
     clienteId?: StringFieldUpdateOperationsInput | string
+    trocasOleo?: TrocaOleoUncheckedUpdateManyWithoutCarroNestedInput
   }
 
   export type CarroCreateManyInput = {
     id?: string
     placa: string
     modelo: string
-    oleoDataTroca: Date | string
-    oleoDataProximaTroca: Date | string
     clienteId: string
   }
 
   export type CarroUpdateManyMutationInput = {
     placa?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
-    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CarroUncheckedUpdateManyInput = {
     placa?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
-    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
     clienteId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -4577,6 +7017,52 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type TokenBlacklistCountOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TokenBlacklistMaxOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TokenBlacklistMinOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4653,15 +7139,65 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type CarroScalarRelationFilter = {
+    is?: CarroWhereInput
+    isNot?: CarroWhereInput
+  }
+
+  export type TrocaOleoCountOrderByAggregateInput = {
+    id?: SortOrder
+    oleoDataTroca?: SortOrder
+    oleoDataProximaTroca?: SortOrder
+    kmTroca?: SortOrder
+    KmProximaTroca?: SortOrder
+    tipoOleo?: SortOrder
+    carroId?: SortOrder
+    status?: SortOrder
+  }
+
+  export type TrocaOleoAvgOrderByAggregateInput = {
+    kmTroca?: SortOrder
+    KmProximaTroca?: SortOrder
+  }
+
+  export type TrocaOleoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    oleoDataTroca?: SortOrder
+    oleoDataProximaTroca?: SortOrder
+    kmTroca?: SortOrder
+    KmProximaTroca?: SortOrder
+    tipoOleo?: SortOrder
+    carroId?: SortOrder
+    status?: SortOrder
+  }
+
+  export type TrocaOleoMinOrderByAggregateInput = {
+    id?: SortOrder
+    oleoDataTroca?: SortOrder
+    oleoDataProximaTroca?: SortOrder
+    kmTroca?: SortOrder
+    KmProximaTroca?: SortOrder
+    tipoOleo?: SortOrder
+    carroId?: SortOrder
+    status?: SortOrder
+  }
+
+  export type TrocaOleoSumOrderByAggregateInput = {
+    kmTroca?: SortOrder
+    KmProximaTroca?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type ClienteScalarRelationFilter = {
@@ -4669,12 +7205,20 @@ export namespace Prisma {
     isNot?: ClienteWhereInput
   }
 
+  export type TrocaOleoListRelationFilter = {
+    every?: TrocaOleoWhereInput
+    some?: TrocaOleoWhereInput
+    none?: TrocaOleoWhereInput
+  }
+
+  export type TrocaOleoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type CarroCountOrderByAggregateInput = {
     id?: SortOrder
     placa?: SortOrder
     modelo?: SortOrder
-    oleoDataTroca?: SortOrder
-    oleoDataProximaTroca?: SortOrder
     clienteId?: SortOrder
   }
 
@@ -4682,8 +7226,6 @@ export namespace Prisma {
     id?: SortOrder
     placa?: SortOrder
     modelo?: SortOrder
-    oleoDataTroca?: SortOrder
-    oleoDataProximaTroca?: SortOrder
     clienteId?: SortOrder
   }
 
@@ -4691,23 +7233,7 @@ export namespace Prisma {
     id?: SortOrder
     placa?: SortOrder
     modelo?: SortOrder
-    oleoDataTroca?: SortOrder
-    oleoDataProximaTroca?: SortOrder
     clienteId?: SortOrder
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type ClienteCreateNestedManyWithoutAdminInput = {
@@ -4754,6 +7280,10 @@ export namespace Prisma {
     update?: ClienteUpdateWithWhereUniqueWithoutAdminInput | ClienteUpdateWithWhereUniqueWithoutAdminInput[]
     updateMany?: ClienteUpdateManyWithWhereWithoutAdminInput | ClienteUpdateManyWithWhereWithoutAdminInput[]
     deleteMany?: ClienteScalarWhereInput | ClienteScalarWhereInput[]
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type AdminCreateNestedOneWithoutClientesInput = {
@@ -4820,14 +7350,42 @@ export namespace Prisma {
     deleteMany?: CarroScalarWhereInput | CarroScalarWhereInput[]
   }
 
+  export type CarroCreateNestedOneWithoutTrocasOleoInput = {
+    create?: XOR<CarroCreateWithoutTrocasOleoInput, CarroUncheckedCreateWithoutTrocasOleoInput>
+    connectOrCreate?: CarroCreateOrConnectWithoutTrocasOleoInput
+    connect?: CarroWhereUniqueInput
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type CarroUpdateOneRequiredWithoutTrocasOleoNestedInput = {
+    create?: XOR<CarroCreateWithoutTrocasOleoInput, CarroUncheckedCreateWithoutTrocasOleoInput>
+    connectOrCreate?: CarroCreateOrConnectWithoutTrocasOleoInput
+    upsert?: CarroUpsertWithoutTrocasOleoInput
+    connect?: CarroWhereUniqueInput
+    update?: XOR<XOR<CarroUpdateToOneWithWhereWithoutTrocasOleoInput, CarroUpdateWithoutTrocasOleoInput>, CarroUncheckedUpdateWithoutTrocasOleoInput>
+  }
+
   export type ClienteCreateNestedOneWithoutCarrosInput = {
     create?: XOR<ClienteCreateWithoutCarrosInput, ClienteUncheckedCreateWithoutCarrosInput>
     connectOrCreate?: ClienteCreateOrConnectWithoutCarrosInput
     connect?: ClienteWhereUniqueInput
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type TrocaOleoCreateNestedManyWithoutCarroInput = {
+    create?: XOR<TrocaOleoCreateWithoutCarroInput, TrocaOleoUncheckedCreateWithoutCarroInput> | TrocaOleoCreateWithoutCarroInput[] | TrocaOleoUncheckedCreateWithoutCarroInput[]
+    connectOrCreate?: TrocaOleoCreateOrConnectWithoutCarroInput | TrocaOleoCreateOrConnectWithoutCarroInput[]
+    createMany?: TrocaOleoCreateManyCarroInputEnvelope
+    connect?: TrocaOleoWhereUniqueInput | TrocaOleoWhereUniqueInput[]
+  }
+
+  export type TrocaOleoUncheckedCreateNestedManyWithoutCarroInput = {
+    create?: XOR<TrocaOleoCreateWithoutCarroInput, TrocaOleoUncheckedCreateWithoutCarroInput> | TrocaOleoCreateWithoutCarroInput[] | TrocaOleoUncheckedCreateWithoutCarroInput[]
+    connectOrCreate?: TrocaOleoCreateOrConnectWithoutCarroInput | TrocaOleoCreateOrConnectWithoutCarroInput[]
+    createMany?: TrocaOleoCreateManyCarroInputEnvelope
+    connect?: TrocaOleoWhereUniqueInput | TrocaOleoWhereUniqueInput[]
   }
 
   export type ClienteUpdateOneRequiredWithoutCarrosNestedInput = {
@@ -4836,6 +7394,34 @@ export namespace Prisma {
     upsert?: ClienteUpsertWithoutCarrosInput
     connect?: ClienteWhereUniqueInput
     update?: XOR<XOR<ClienteUpdateToOneWithWhereWithoutCarrosInput, ClienteUpdateWithoutCarrosInput>, ClienteUncheckedUpdateWithoutCarrosInput>
+  }
+
+  export type TrocaOleoUpdateManyWithoutCarroNestedInput = {
+    create?: XOR<TrocaOleoCreateWithoutCarroInput, TrocaOleoUncheckedCreateWithoutCarroInput> | TrocaOleoCreateWithoutCarroInput[] | TrocaOleoUncheckedCreateWithoutCarroInput[]
+    connectOrCreate?: TrocaOleoCreateOrConnectWithoutCarroInput | TrocaOleoCreateOrConnectWithoutCarroInput[]
+    upsert?: TrocaOleoUpsertWithWhereUniqueWithoutCarroInput | TrocaOleoUpsertWithWhereUniqueWithoutCarroInput[]
+    createMany?: TrocaOleoCreateManyCarroInputEnvelope
+    set?: TrocaOleoWhereUniqueInput | TrocaOleoWhereUniqueInput[]
+    disconnect?: TrocaOleoWhereUniqueInput | TrocaOleoWhereUniqueInput[]
+    delete?: TrocaOleoWhereUniqueInput | TrocaOleoWhereUniqueInput[]
+    connect?: TrocaOleoWhereUniqueInput | TrocaOleoWhereUniqueInput[]
+    update?: TrocaOleoUpdateWithWhereUniqueWithoutCarroInput | TrocaOleoUpdateWithWhereUniqueWithoutCarroInput[]
+    updateMany?: TrocaOleoUpdateManyWithWhereWithoutCarroInput | TrocaOleoUpdateManyWithWhereWithoutCarroInput[]
+    deleteMany?: TrocaOleoScalarWhereInput | TrocaOleoScalarWhereInput[]
+  }
+
+  export type TrocaOleoUncheckedUpdateManyWithoutCarroNestedInput = {
+    create?: XOR<TrocaOleoCreateWithoutCarroInput, TrocaOleoUncheckedCreateWithoutCarroInput> | TrocaOleoCreateWithoutCarroInput[] | TrocaOleoUncheckedCreateWithoutCarroInput[]
+    connectOrCreate?: TrocaOleoCreateOrConnectWithoutCarroInput | TrocaOleoCreateOrConnectWithoutCarroInput[]
+    upsert?: TrocaOleoUpsertWithWhereUniqueWithoutCarroInput | TrocaOleoUpsertWithWhereUniqueWithoutCarroInput[]
+    createMany?: TrocaOleoCreateManyCarroInputEnvelope
+    set?: TrocaOleoWhereUniqueInput | TrocaOleoWhereUniqueInput[]
+    disconnect?: TrocaOleoWhereUniqueInput | TrocaOleoWhereUniqueInput[]
+    delete?: TrocaOleoWhereUniqueInput | TrocaOleoWhereUniqueInput[]
+    connect?: TrocaOleoWhereUniqueInput | TrocaOleoWhereUniqueInput[]
+    update?: TrocaOleoUpdateWithWhereUniqueWithoutCarroInput | TrocaOleoUpdateWithWhereUniqueWithoutCarroInput[]
+    updateMany?: TrocaOleoUpdateManyWithWhereWithoutCarroInput | TrocaOleoUpdateManyWithWhereWithoutCarroInput[]
+    deleteMany?: TrocaOleoScalarWhereInput | TrocaOleoScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -4880,6 +7466,31 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -4907,29 +7518,17 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type ClienteCreateWithoutAdminInput = {
@@ -5005,16 +7604,14 @@ export namespace Prisma {
     id?: string
     placa: string
     modelo: string
-    oleoDataTroca: Date | string
-    oleoDataProximaTroca: Date | string
+    trocasOleo?: TrocaOleoCreateNestedManyWithoutCarroInput
   }
 
   export type CarroUncheckedCreateWithoutClienteInput = {
     id?: string
     placa: string
     modelo: string
-    oleoDataTroca: Date | string
-    oleoDataProximaTroca: Date | string
+    trocasOleo?: TrocaOleoUncheckedCreateNestedManyWithoutCarroInput
   }
 
   export type CarroCreateOrConnectWithoutClienteInput = {
@@ -5070,9 +7667,49 @@ export namespace Prisma {
     id?: StringFilter<"Carro"> | string
     placa?: StringFilter<"Carro"> | string
     modelo?: StringFilter<"Carro"> | string
-    oleoDataTroca?: DateTimeFilter<"Carro"> | Date | string
-    oleoDataProximaTroca?: DateTimeFilter<"Carro"> | Date | string
     clienteId?: StringFilter<"Carro"> | string
+  }
+
+  export type CarroCreateWithoutTrocasOleoInput = {
+    id?: string
+    placa: string
+    modelo: string
+    cliente: ClienteCreateNestedOneWithoutCarrosInput
+  }
+
+  export type CarroUncheckedCreateWithoutTrocasOleoInput = {
+    id?: string
+    placa: string
+    modelo: string
+    clienteId: string
+  }
+
+  export type CarroCreateOrConnectWithoutTrocasOleoInput = {
+    where: CarroWhereUniqueInput
+    create: XOR<CarroCreateWithoutTrocasOleoInput, CarroUncheckedCreateWithoutTrocasOleoInput>
+  }
+
+  export type CarroUpsertWithoutTrocasOleoInput = {
+    update: XOR<CarroUpdateWithoutTrocasOleoInput, CarroUncheckedUpdateWithoutTrocasOleoInput>
+    create: XOR<CarroCreateWithoutTrocasOleoInput, CarroUncheckedCreateWithoutTrocasOleoInput>
+    where?: CarroWhereInput
+  }
+
+  export type CarroUpdateToOneWithWhereWithoutTrocasOleoInput = {
+    where?: CarroWhereInput
+    data: XOR<CarroUpdateWithoutTrocasOleoInput, CarroUncheckedUpdateWithoutTrocasOleoInput>
+  }
+
+  export type CarroUpdateWithoutTrocasOleoInput = {
+    placa?: StringFieldUpdateOperationsInput | string
+    modelo?: StringFieldUpdateOperationsInput | string
+    cliente?: ClienteUpdateOneRequiredWithoutCarrosNestedInput
+  }
+
+  export type CarroUncheckedUpdateWithoutTrocasOleoInput = {
+    placa?: StringFieldUpdateOperationsInput | string
+    modelo?: StringFieldUpdateOperationsInput | string
+    clienteId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ClienteCreateWithoutCarrosInput = {
@@ -5094,6 +7731,35 @@ export namespace Prisma {
   export type ClienteCreateOrConnectWithoutCarrosInput = {
     where: ClienteWhereUniqueInput
     create: XOR<ClienteCreateWithoutCarrosInput, ClienteUncheckedCreateWithoutCarrosInput>
+  }
+
+  export type TrocaOleoCreateWithoutCarroInput = {
+    id?: string
+    oleoDataTroca: Date | string
+    oleoDataProximaTroca: Date | string
+    kmTroca: number
+    KmProximaTroca: number
+    tipoOleo: string
+    status: boolean
+  }
+
+  export type TrocaOleoUncheckedCreateWithoutCarroInput = {
+    id?: string
+    oleoDataTroca: Date | string
+    oleoDataProximaTroca: Date | string
+    kmTroca: number
+    KmProximaTroca: number
+    tipoOleo: string
+    status: boolean
+  }
+
+  export type TrocaOleoCreateOrConnectWithoutCarroInput = {
+    where: TrocaOleoWhereUniqueInput
+    create: XOR<TrocaOleoCreateWithoutCarroInput, TrocaOleoUncheckedCreateWithoutCarroInput>
+  }
+
+  export type TrocaOleoCreateManyCarroInputEnvelope = {
+    data: TrocaOleoCreateManyCarroInput | TrocaOleoCreateManyCarroInput[]
   }
 
   export type ClienteUpsertWithoutCarrosInput = {
@@ -5119,6 +7785,36 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     telefone?: IntFieldUpdateOperationsInput | number
     adminId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TrocaOleoUpsertWithWhereUniqueWithoutCarroInput = {
+    where: TrocaOleoWhereUniqueInput
+    update: XOR<TrocaOleoUpdateWithoutCarroInput, TrocaOleoUncheckedUpdateWithoutCarroInput>
+    create: XOR<TrocaOleoCreateWithoutCarroInput, TrocaOleoUncheckedCreateWithoutCarroInput>
+  }
+
+  export type TrocaOleoUpdateWithWhereUniqueWithoutCarroInput = {
+    where: TrocaOleoWhereUniqueInput
+    data: XOR<TrocaOleoUpdateWithoutCarroInput, TrocaOleoUncheckedUpdateWithoutCarroInput>
+  }
+
+  export type TrocaOleoUpdateManyWithWhereWithoutCarroInput = {
+    where: TrocaOleoScalarWhereInput
+    data: XOR<TrocaOleoUpdateManyMutationInput, TrocaOleoUncheckedUpdateManyWithoutCarroInput>
+  }
+
+  export type TrocaOleoScalarWhereInput = {
+    AND?: TrocaOleoScalarWhereInput | TrocaOleoScalarWhereInput[]
+    OR?: TrocaOleoScalarWhereInput[]
+    NOT?: TrocaOleoScalarWhereInput | TrocaOleoScalarWhereInput[]
+    id?: StringFilter<"TrocaOleo"> | string
+    oleoDataTroca?: DateTimeFilter<"TrocaOleo"> | Date | string
+    oleoDataProximaTroca?: DateTimeFilter<"TrocaOleo"> | Date | string
+    kmTroca?: IntFilter<"TrocaOleo"> | number
+    KmProximaTroca?: IntFilter<"TrocaOleo"> | number
+    tipoOleo?: StringFilter<"TrocaOleo"> | string
+    carroId?: StringFilter<"TrocaOleo"> | string
+    status?: BoolFilter<"TrocaOleo"> | boolean
   }
 
   export type ClienteCreateManyAdminInput = {
@@ -5152,29 +7848,60 @@ export namespace Prisma {
     id?: string
     placa: string
     modelo: string
-    oleoDataTroca: Date | string
-    oleoDataProximaTroca: Date | string
   }
 
   export type CarroUpdateWithoutClienteInput = {
     placa?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
-    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    trocasOleo?: TrocaOleoUpdateManyWithoutCarroNestedInput
   }
 
   export type CarroUncheckedUpdateWithoutClienteInput = {
     placa?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
-    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    trocasOleo?: TrocaOleoUncheckedUpdateManyWithoutCarroNestedInput
   }
 
   export type CarroUncheckedUpdateManyWithoutClienteInput = {
     placa?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TrocaOleoCreateManyCarroInput = {
+    id?: string
+    oleoDataTroca: Date | string
+    oleoDataProximaTroca: Date | string
+    kmTroca: number
+    KmProximaTroca: number
+    tipoOleo: string
+    status: boolean
+  }
+
+  export type TrocaOleoUpdateWithoutCarroInput = {
     oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
     oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    kmTroca?: IntFieldUpdateOperationsInput | number
+    KmProximaTroca?: IntFieldUpdateOperationsInput | number
+    tipoOleo?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type TrocaOleoUncheckedUpdateWithoutCarroInput = {
+    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    kmTroca?: IntFieldUpdateOperationsInput | number
+    KmProximaTroca?: IntFieldUpdateOperationsInput | number
+    tipoOleo?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type TrocaOleoUncheckedUpdateManyWithoutCarroInput = {
+    oleoDataTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    oleoDataProximaTroca?: DateTimeFieldUpdateOperationsInput | Date | string
+    kmTroca?: IntFieldUpdateOperationsInput | number
+    KmProximaTroca?: IntFieldUpdateOperationsInput | number
+    tipoOleo?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
   }
 
 
